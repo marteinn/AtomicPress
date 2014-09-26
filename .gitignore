@@ -1,0 +1,13 @@
+*.pyc
+/lib
+/include
+/bin
+.DS_Store
+.*.swp
+tags
+.idea/
+dist
+build
+.coverage
+*.egg-info/
+/data
