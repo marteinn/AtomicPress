@@ -8,7 +8,6 @@ flaskpress
 
 """
 
-
 __title__ = 'flaskpress'
 __version__ = '1.0'
 __build__ = 10
