@@ -92,7 +92,7 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200))
     slug = db.Column(db.String(200))
-    hidden = db.Column(db.Boolean())
+    hidden = db.Column(db.Boolean(), default=False)
 
     def __unicode__(self):
         return self.name
@@ -102,7 +102,7 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200))
     slug = db.Column(db.String(200))
-    hidden = db.Column(db.Boolean())
+    hidden = db.Column(db.Boolean(), default=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     parent = relationship("Category", remote_side=[id])
 
