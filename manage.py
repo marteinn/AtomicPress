@@ -4,7 +4,7 @@
 from atomicpress import app
 
 # Theme
-from themes.minimal import minimal
+from atomicpress.themes.minimal import minimal
 
 # Activate theme
 app.activate_theme(minimal)

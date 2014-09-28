@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+"""
+atomicpress.ext.exporter
+----------
+This module exports the blog as static html files.
+
+"""
+
 import os
 from flask import Blueprint
 from flask_frozen import Freezer

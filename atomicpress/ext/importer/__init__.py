@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 
+"""
+atomicpress.ext.importer
+----------
+This module handles wordpress imports by exposing the import command.
+
+"""
+
 from datetime import datetime
 import re
 import os

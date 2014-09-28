@@ -4,7 +4,8 @@ from flask import request, url_for
 
 def is_url_showing(route=None, **kwargs):
     url = url_for(route, **kwargs)
-    urls = (app.config["FREEZER_BASE_URL"]+request.path.strip("/"), url)
+    urls = (app.config["FREEZER_BASE_URL"].strip("/")+request.path,
+            request.path,)
 
     if url in urls:
         return "active"

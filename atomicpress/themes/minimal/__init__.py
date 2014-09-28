@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-{{blog_system}}.minimal
+atomicpress.themes.minimal
 ----------
-A basic {{blog_system}} theme.
+A basic atomicpress theme.
 
 """
 
