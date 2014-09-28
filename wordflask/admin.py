@@ -26,5 +26,6 @@ def create_admin():
     admin.add_view(ModelView(models.Tag, db.session, category="Post"))
     admin.add_view(ModelView(models.Category, db.session, category="Post"))
 
+    # TODO: Rewrite with unipath
     path = op.join(op.dirname(__file__), '../wordflask/uploads')
     admin.add_view(FileAdmin(path, '/uploads/', name='Upload files'))
