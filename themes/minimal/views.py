@@ -43,11 +43,13 @@ def post_list(category=None, page=0, year=0, month=0, tag=None):
     num_pages = math.ceil(num_posts/PAGE_SIZE)
     posts = posts.slice(page*PAGE_SIZE, (page+1)*PAGE_SIZE)
 
+
     return render_template("list.html",
                            blog=blog,
                            posts=posts,
                            page=page,
-                           num_pages=num_pages
+                           num_pages=num_pages,
+                           menu_pages=_get_menu_pages()
                            )
 
 
@@ -66,7 +68,11 @@ def post_single(slug=None):
     return render_template("single.html",
                            blog=blog,
                            post=post,
+                           menu_pages=_get_menu_pages()
                            )
+
+
+
 @minimal.route("/archive")
 def menu():
     blog = Blog.query.all()[0]
@@ -118,9 +124,16 @@ def menu():
                            categories=categories,
                            archive=archive_data,
                            tags=tags,
+                           menu_pages=_get_menu_pages()
                            )
 
 @minimal.route("/uploads/<filename>")
 def uploaded_file(filename):
     app = current_app._get_current_object()
     return send_from_directory(app.config["UPLOADS_PATH"], filename)
+
+
+def _get_menu_pages():
+    slugs = ("about", )
+    posts = Post.query.filter(Post.name.in_(slugs)).all()
+    return posts

@@ -10,7 +10,9 @@
 
     <nav class="header-nav l-right text-small">
         <ul>
-            <li><a href="{{ url_for("minimal.post_single", slug="about") }}">About</a></li>
+            {% for page in menu_pages %}
+                <li><a href="{{ url_for("minimal.post_single", slug=page.name) }}">{{ page.title }}</a></li>
+            {% endfor %}
             <li><a href="{{ url_for("minimal.menu") }}">Menu</a></li>
         </ul>
     </nav>
