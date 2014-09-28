@@ -1,12 +1,16 @@
 # AtomicPress
 
+AtomicPress is a static blog generator modeled after WordPress data models.
+
 ## How it works
 
 ## Getting started
 
+To install AtomicPress you'll need python 2.7 and pip.
+
 ## Commands
 
-### Updating
+### Updating from a older version
 
     python manage.py upgrade -d=atomicpress/migrations/
 
