@@ -29,13 +29,16 @@ manager = Manager(app)
 
 
 def run():
+    from atomicpress import views
     from atomicpress import filters
     from atomicpress import commands
     from atomicpress import context_processors
     from atomicpress.ext.importer import ImporterCommand
+    from atomicpress.ext.exporter import ExporterCommand
 
     manager.add_command('db', MigrateCommand)
     manager.add_command('importer', ImporterCommand)
+    manager.add_command('exporter', ExporterCommand)
 
     manager.run()
 
