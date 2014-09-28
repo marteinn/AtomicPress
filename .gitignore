@@ -15,3 +15,5 @@ build
 node_modules
 
 *.db
+/uploads
+/config.py
