@@ -12,10 +12,12 @@ app.config.update(dict(
     DEBUG=True,
     SECRET_KEY='',
     USERNAME='admin',
-    PASSWORD='default'
+    PASSWORD='default',
+    STATIC_URL='/static/',
+    UPLOADS_URL='/uploads/',
 ))
 
-app.config.from_envvar('WORDFLASK_SETTINGS', silent=False)
+app.config.from_envvar('ATOMICPRESS_SETTINGS', silent=False)
 
 db = SQLAlchemy()
 db.init_app(app)
