@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 import os.path as op
 from flask import current_app
 from flask_admin.contrib.fileadmin import FileAdmin
 from flask_admin import AdminIndexView, expose, Admin
 from flask_admin.contrib.sqla import ModelView
-from wordflask import models
-from wordflask.app import db
+from atomicpress import models
+from atomicpress.app import db
 
 
 class HomeView(AdminIndexView):
@@ -24,5 +26,5 @@ def create_admin():
     admin.add_view(ModelView(models.Category, db.session, category="Post"))
 
     # TODO: Rewrite with unipath
-    path = op.join(op.dirname(__file__), '../wordflask/uploads')
+    path = op.join(op.dirname(__file__), '../atomicpress/uploads')
     admin.add_view(FileAdmin(path, '/uploads/', name='Upload files'))

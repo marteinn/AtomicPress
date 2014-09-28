@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import posixpath
 from tempfile import NamedTemporaryFile
 import requests

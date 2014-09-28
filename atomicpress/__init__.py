@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 """
-flaskpress
+atomicpress
 ----------
 
 
 """
 
-__title__ = 'flaskpress'
+__title__ = 'atomicpress'
 __version__ = '1.0'
 __build__ = 10
 __author__ = 'Martin Sandström'

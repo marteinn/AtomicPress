@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 def get_months_apart(d1, d2):
     """
     Get amount of months between dates

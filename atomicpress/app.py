@@ -26,9 +26,9 @@ manager = Manager(app)
 
 
 def run():
-    from wordflask import filters
-    from wordflask import commands
-    from wordflask.ext.importer import ImporterCommand
+    from atomicpress import filters
+    from atomicpress import commands
+    from atomicpress.ext.importer import ImporterCommand
 
     manager.add_command('db', MigrateCommand)
     manager.add_command('importer', ImporterCommand)

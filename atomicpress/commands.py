@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from subprocess import call
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_script import prompt_bool
-from wordflask.admin import create_admin
-from wordflask.app import manager, db, app
+from atomicpress.admin import create_admin
+from atomicpress.app import manager, db, app
 
 
 @manager.command

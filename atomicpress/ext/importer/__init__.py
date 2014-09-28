@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import datetime
 import re
 import os
@@ -5,9 +7,9 @@ from flask import Blueprint
 from flask_script import Manager
 from unipath import Path
 import wpparser
-from wordflask.app import db, app
-from wordflask.models import Blog, Author, Category, Tag, Post
-from wordflask.utils.files import generate_image_from_url
+from atomicpress.app import db, app
+from atomicpress.models import Blog, Author, Category, Tag, Post
+from atomicpress.utils.files import generate_image_from_url
 
 
 importer = Blueprint("importer", __name__)

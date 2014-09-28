@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from wordflask import app
+from atomicpress import app
 
 # Theme
 from themes.minimal import minimal

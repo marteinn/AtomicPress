@@ -7,8 +7,8 @@ import datetime
 from flask import render_template, send_from_directory, current_app
 from sqlalchemy import desc, asc, func
 from themes.minimal import minimal, PAGE_SIZE
-from wordflask.models import Blog, Post, PostStatus, PostType, Category, Tag
-from wordflask.utils import date as dateutils
+from atomicpress.models import Blog, Post, PostStatus, PostType, Category, Tag
+from atomicpress.utils import date as dateutils
 
 
 @minimal.route('/category/<string:category>')  # TODO: Handle recursive names.

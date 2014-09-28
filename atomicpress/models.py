@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-
-Screenshot of WP db schema: http://codex.wordpress.org/images/9/97/WP3.8-ERD.png
-
-"""
-
 import datetime
 from app import db
 from sqlalchemy.orm import relationship
