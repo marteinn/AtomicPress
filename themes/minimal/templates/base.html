@@ -9,10 +9,7 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='minimal/img/favicon.ico') }}" />
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='minimal/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='minimal/css/main.css') }}">
-    <script src="{{ url_for('static', filename='minimal/lib/js/modernizr/modernizr.js') }}"></script>
 
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700,100' rel='stylesheet' type='text/css'>
 </head>
@@ -31,8 +28,6 @@
     {% block footer %}
     {% endblock %}
 </main>
-
-<script src="{{ url_for('static', filename='minimal/js/mis.min.js') }}"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 {% if ga_account %}
