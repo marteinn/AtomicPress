@@ -21,8 +21,17 @@
 }
 
 .header .header-nav li {
-    margin-left: @margin_small;
-    display: inline-block;
+    margin-left: @margin_small/2;
+    display: inline;
+
+    a {
+        padding: 10px;
+
+        &.active {
+            background-color: @color_header_active_bg;
+            color: @color_header_active_text;
+        }
+    }
 }
 
 @media @media_medium {
