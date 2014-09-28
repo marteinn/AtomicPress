@@ -39,14 +39,16 @@ def _handle_gist(s):
     gist_id = s.groups(2)[0]
     raw_content = ""
 
-    result = requests.get("https://api.github.com/gists/%s" % gist_id,
-                          timeout=30)
+    # Load data for backend rendering (and seo)
+    if app.config["GIST_BACKEND_RENDERING"]:
+        result = requests.get("https://api.github.com/gists/%s" % gist_id,
+                              timeout=30)
 
-    gist = result.json()
+        gist = result.json()
 
-    for gist_file in gist.get("files"):
-        file_content = gist.get("files").get(gist_file)
-        raw_content += file_content.get("content")
+        for gist_file in gist.get("files"):
+            file_content = gist.get("files").get(gist_file)
+            raw_content += file_content.get("content")
 
     return '<script src="https://gist.github.com/%s.js">' \
            '<noscript><pre>%s</pre></noscript></script>' \

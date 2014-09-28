@@ -15,6 +15,7 @@ app.config.update(dict(
     PASSWORD='default',
     STATIC_URL='/static/',
     UPLOADS_URL='/uploads/',
+    GIST_BACKEND_RENDERING=True,
 ))
 
 app.config.from_envvar('ATOMICPRESS_SETTINGS', silent=False)
