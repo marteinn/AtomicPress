@@ -1,12 +1,18 @@
 # AtomicPress
 
 AtomicPress is a static blog generator modeled after WordPress data models.
+It is built in Flask and takes advantage of it's awesome eco-system such as
+Flask-Freeze, Flask-Admin, Flask-Migrations, Flask-SQLAlchemy, to mention a few.
+
 
 ## Features
 
+- Ports, Pages, Categories, Tags and Authors, almost like WordPress.
 - Markdown rendering
 - Theme support
 - Import from Wordpress
+- Gist integration
+- Admin interface
 
 
 ## Getting started
