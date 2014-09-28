@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-minimal
+{{blog_system}}.minimal
 ----------
-
+A basic {{blog_system}} theme.
 
 """
 
@@ -25,6 +25,7 @@ minimal = Blueprint('minimal', __name__,
                     template_folder='templates')
 
 PAGE_SIZE = 10
+GA_TRACKING = ""
 
 import views
 
