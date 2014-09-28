@@ -12,3 +12,5 @@ build
 *.egg-info/
 /data
 /wordflask/uploads
+
+*.db
