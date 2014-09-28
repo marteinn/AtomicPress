@@ -12,14 +12,14 @@
         <ul>
             {% for page in menu_pages %}
                 <li>
-                    <a class="{{ is_showing("minimal.post_single", slug=page.name) }}"
+                    <a class="{{ is_url_showing("minimal.post_single", slug=page.name) }}"
                         href="{{ url_for("minimal.post_single", slug=page.name) }}">
                         {{ page.title }}
                     </a>
                 </li>
             {% endfor %}
             <li>
-                <a class="{{ is_showing("minimal.menu") }}"
+                <a class="{{ is_url_showing("minimal.menu") }}"
                    href="{{ url_for("minimal.menu") }}">
                     Menu
                 </a>
