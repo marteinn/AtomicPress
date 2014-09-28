@@ -1,7 +1,9 @@
 from datetime import datetime
+import re
 import os
 from flask import Blueprint
 from flask_script import Manager
+from unipath import Path
 import wpparser
 from wordflask.app import db, app
 from wordflask.models import Blog, Author, Category, Tag, Post
@@ -82,6 +84,8 @@ def insert(data):
     created_posts = []
     post_id_reference = {}
 
+    data["posts"] = data["posts"][::-1]
+
     for post_data in data["posts"]:
         print "Adding %s..." % post_data["title"]
 
@@ -93,30 +97,50 @@ def insert(data):
         date = datetime.strptime(post_data["post_date"],
                                  '%Y-%m-%d %H:%M:%S')
 
+        post_content = None
+        if post_data["content"]:
+            post_content = _clean_post_content(blog_data["blog_url"],
+                                               post_data["content"])
+
         post = Post(
             title=post_data["title"],
             author=author,
             date=date,
             modified=date,
             name=post_data["post_name"],
-            content=post_data["content"],
+            content=post_content,
             excerpt=post_data["excerpt"],
             status=post_data["status"],
             order=post_data["menu_order"],
             type=post_data["post_type"],
         )
 
+        """
         # Save attachment
         if post_data["post_type"] == "attachment":
-            guid = post_data["guid"]
-            relative_path = guid.split("wp-content/uploads/")[1]
-            file_name, image = generate_image_from_url(guid)
-            file_path = app.config['UPLOADS_PATH'].child(relative_path)
-            if not os.path.exists(os.path.dirname(file_path)):
-                os.makedirs(os.path.dirname(file_path))
+            file_url = post_data["guid"]
+            site_url, relative_path = file_url.split("wp-content/uploads/")
+            relative_path = Path(relative_path)
 
-            image.save(file_path)
+            _save_image(file_url)
+
+            # Save thumbnails
+            metadata = {}
+            if "postmeta" in post_data:
+                if "attachment_metadata" in post_data["postmeta"]:
+                    metadata = post_data["postmeta"]["attachment_metadata"]
+
+            if "sizes" in metadata:
+                for size in metadata["sizes"]:
+                    file_name = metadata["sizes"][size]["file"]
+                    size_rel_path = relative_path.ancestor(1).child(file_name)
+                    size_file_url = "/".join([site_url, "wp-content/uploads",
+                                              size_rel_path])
+
+                    _save_image(size_file_url)
+
             post.guid = relative_path
+        """
 
         for name in post_data["categories"]:
             category = category_reference[name]
@@ -143,6 +167,36 @@ def insert(data):
             created_post.parent = parent_post
 
     db.session.commit()
+
+
+def _clean_post_content(blog_url, content):
+    """
+    Replace import path with something relative to blog.
+    """
+
+    content = re.sub(
+        "<img.src=\"%s(.*)\"" % blog_url,
+        lambda s: "<img src=\"%s\"" % _get_relative_upload(s.groups(1)[0]),
+        content)
+
+    return content
+
+
+def _get_relative_upload(url):
+    """
+    Return relative upload path from url.
+    """
+    return app.config["UPLOADS_URL"]+url.split("wp-content/uploads/")[1]
+
+
+def _save_image(url):
+    site_url, relative_path = url.split("wp-content/uploads/")
+    file_name, image = generate_image_from_url(url)
+    file_path = app.config['UPLOADS_PATH'].child(relative_path)
+    if not os.path.exists(os.path.dirname(file_path)):
+        os.makedirs(os.path.dirname(file_path))
+
+    image.save(file_path)
 
 
 def _insert_categories(categories, parent=None, reference=None):
