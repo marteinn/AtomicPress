@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from flask_migrate import Migrate
+
+from flask_migrate import Migrate, MigrateCommand
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-
-__author__ = 'martinsandstrom'
+from flask_script import Manager
 
 
 app = Flask(__name__)
@@ -21,3 +21,18 @@ db = SQLAlchemy()
 db.init_app(app)
 
 migrate = Migrate(app, db)
+
+manager = Manager(app)
+
+
+def start():
+    from wordflask import filters
+    from wordflask import commands
+    from wordflask.ext.importer import ImporterCommand
+
+    manager.add_command('db', MigrateCommand)
+    manager.add_command('importer', ImporterCommand)
+
+
+def activate_theme(theme):
+    app.register_blueprint(theme, url_prefix="")
