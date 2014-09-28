@@ -2,11 +2,17 @@
 
 AtomicPress is a static blog generator modeled after WordPress data models.
 
-## How it works
+## Features
+
+- Markdown rendering
+- Theme support
+- Import from Wordpress
+
 
 ## Getting started
 
 To install AtomicPress you'll need python 2.7 and pip.
+
 
 ## Commands
 
@@ -14,9 +20,13 @@ To install AtomicPress you'll need python 2.7 and pip.
 
     python manage.py upgrade -d=atomicpress/migrations/
 
+
 ### Importing
 
+AtomicPress uses wpparser to import data from wordpress export files.
+
     python manage.py importer import_blog -f=./data/blog.wordpress.2014-09-25.xml
+
 
 ### Exporting
 
@@ -30,4 +40,4 @@ Want to contribute? Awesome. Just send a pull request.
 
 ## License
 
-wpparser is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+AtomicPress is released under the [MIT License](http://www.opensource.org/licenses/MIT).
