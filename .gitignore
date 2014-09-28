@@ -12,5 +12,6 @@ build
 *.egg-info/
 /data
 /wordflask/uploads
+node_modules
 
 *.db
