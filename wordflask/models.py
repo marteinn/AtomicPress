@@ -40,6 +40,8 @@ class Author(db.Model):
     nicename = db.Column(db.String(50))
     email = db.Column(db.String(100))
     display_name = db.Column(db.String(250))
+    bio = db.Column(db.Text())
+    avatar = db.Column(db.String(255))
 
     def __unicode__(self):
         return self.login
