@@ -4,7 +4,7 @@ import calendar
 import math
 import datetime
 
-from flask import render_template, send_from_directory, current_app
+from flask import render_template
 from sqlalchemy import desc, asc, func
 from themes.minimal import minimal, PAGE_SIZE
 from atomicpress.models import Blog, Post, PostStatus, PostType, Category, Tag
@@ -42,7 +42,6 @@ def post_list(category=None, page=0, year=0, month=0, tag=None):
     num_posts = posts.count()
     num_pages = math.ceil(num_posts/PAGE_SIZE)
     posts = posts.slice(page*PAGE_SIZE, (page+1)*PAGE_SIZE)
-
 
     return render_template("list.html",
                            blog=blog,
