@@ -1,0 +1,92 @@
+.post {
+    padding-top: @margin_small;
+    padding-bottom: @margin_small;
+
+    border-bottom: 1px solid @color_post_separator;
+}
+
+.post .post-title {
+    margin-bottom: @margin_small;
+    color: @color_post_title;
+}
+
+
+.post .breadcrumb {
+    margin-bottom: @margin_small;
+}
+
+.post .post-content {
+    h1 {
+        .text-largest();
+    }
+
+    h2 {
+        .text-larger();
+    }
+
+    h3 {
+        .text-large();
+    }
+
+    h4 {
+    }
+
+    ul {
+        list-style-type: square;
+        padding-left: @margin_small*2;
+    }
+
+    p {
+        margin-top: @margin_small;
+        margin-bottom: @margin_small;
+    }
+
+    pre {
+        font-family: monospace;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    p em {
+        font-style: italic;
+    }
+
+    p code {
+        font-family: monospace;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.post .post-meta {
+    padding-top: @margin_small;
+    padding-bottom: @margin_small;
+}
+
+.post .post-meta-tags {
+    display: inline-block;
+    margin-left: @margin_small;
+
+    li {
+        display: inline-block;
+        margin-right: @margin_small/2;
+    }
+}
+
+/*
+.post-category-python .post-title {
+    color: #336D9D;
+}
+
+.post-category-django .post-title {
+    color: #234F32;
+}
+
+.post-category-android .post-title {
+    color: #90BD4E;
+}
+*/

@@ -1,0 +1,103 @@
+// Fonts
+.font-roboto {
+    font-family: 'Roboto Slab', serif;
+}
+
+.font-roboto-bold {
+    .font-roboto();
+    font-weight: 700;
+}
+
+.font-robot-light {
+    .font-roboto();
+    font-weight: 100;
+}
+
+.font-baskerville {
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
+.font-arial {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/*
+largest
+larger
+large
+medium
+smaller
+smallest
+micro
+*/
+
+// Sizes
+
+.text-largest {
+    font-size: 2.5em;
+    line-height: 1em;
+    .font-roboto-bold();
+
+    @media @media_medium {
+        font-size: 4em;
+    }
+}
+
+.text-larger {
+    font-size: 2em;
+    line-height: 1em;
+    .font-roboto-bold();
+
+    @media @media_medium {
+        font-size: 2.5em;
+    }
+}
+
+.text-large {
+    font-size: 1.5em;
+    line-height: 1em;
+    .font-roboto-bold();
+
+    @media @media_medium {
+        font-size: 2em;
+    }
+}
+
+.text-medium {
+    font-size: 1em;
+    line-height: 1.4em;
+    .font-baskerville();
+
+    @media @media_medium {
+        font-size: 1.4em;
+    }
+}
+
+.text-small {
+    font-size: 0.8em;
+    font-weight: 100;
+     .font-baskerville();
+
+    @media @media_medium {
+        font-size: 1em;
+    }
+}
+
+.text-smaller {
+    font-size: 0.6em;
+    .font-arial();
+
+    @media @media_medium {
+        font-size: 0.8em;
+    }
+}
+
+.text-smallest {
+    font-size: 0.4em;
+    .font-arial();
+
+    @media @media_medium {
+        font-size: 0.6em;
+    }
+}
+

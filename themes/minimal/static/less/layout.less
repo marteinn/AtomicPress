@@ -1,0 +1,38 @@
+.l-left {
+    float: left;
+}
+
+.l-right {
+    float: right;
+}
+
+.l-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.l-v-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content-wrapper {
+    margin-top: @margin_small;
+    margin-bottom: @margin_small;
+    margin-left: @margin_small;
+    margin-right: @margin_small;
+}
+
+
+@media @media_medium {
+
+}
+
+@media @media_large {
+    .content-wrapper {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

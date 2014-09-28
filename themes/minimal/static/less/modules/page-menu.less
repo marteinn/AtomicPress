@@ -1,0 +1,42 @@
+.page-menu {
+    padding-top: @margin_small;
+    padding-bottom: @margin_small;
+}
+
+.page-menu .page-menu-title {
+    margin-bottom: @margin_small;
+}
+
+.page-menu .page-menu-nav {
+    .u-clearfix();
+
+    .h2 {
+        margin-bottom: @margin_small;
+    }
+
+    padding-top: @margin_small;
+    padding-bottom: @margin_small;
+
+    li {
+        .text-medium();
+        float: left;
+        width: 100%;
+    }
+
+    a:visited {
+        color: @color_link_visited;
+    }
+}
+
+@media @media_medium {
+    .page-menu .page-menu-nav li {
+        width: 50%;
+    }
+}
+
+@media @media_large {
+
+    .page-menu .page-menu-nav li {
+        width: 33%;
+    }
+}

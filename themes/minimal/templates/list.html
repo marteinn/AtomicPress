@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        {% include "content.html" %}
+    {% endfor %}
+
+    <nav class="pagination u-clearfix text-small">
+        {% if page-1 >= 0 %}
+            <a href="{{ url_for("minimal.post_list", page=page-1) }}" class="l-left">Newer</a>
+        {% endif %}
+
+        {% if page+1 <= num_pages %}
+            <a href="{{ url_for("minimal.post_list", page=page+1) }}" class="l-right">Older</a>
+        {% endif %}
+    </nav>
+{% endblock %}
+
