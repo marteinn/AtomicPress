@@ -31,6 +31,7 @@ manager = Manager(app)
 def run():
     from atomicpress import filters
     from atomicpress import commands
+    from atomicpress import context_processors
     from atomicpress.ext.importer import ImporterCommand
 
     manager.add_command('db', MigrateCommand)
