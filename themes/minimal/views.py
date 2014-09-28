@@ -53,7 +53,6 @@ def post_list(category=None, page=0, year=0, month=0, tag=None):
 
 @minimal.route("/<string:slug>")
 def post_single(slug=None):
-    print "post_single"
     blog = Blog.query.all()[0]
 
     posts = Post.query.order_by(desc(Post.date)).\
