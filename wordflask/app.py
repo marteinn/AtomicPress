@@ -25,13 +25,15 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 
 
-def start():
+def run():
     from wordflask import filters
     from wordflask import commands
     from wordflask.ext.importer import ImporterCommand
 
     manager.add_command('db', MigrateCommand)
     manager.add_command('importer', ImporterCommand)
+
+    manager.run()
 
 
 def activate_theme(theme):
