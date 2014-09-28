@@ -11,13 +11,13 @@ from atomicpress.models import Blog, Post, PostStatus, PostType, Category, Tag
 from atomicpress.utils import date as dateutils
 
 
-@minimal.route('/category/<string:category>')  # TODO: Handle recursive names.
-@minimal.route('/category/<string:category>/page/<int:page>')
-@minimal.route('/tag/<string:tag>')
-@minimal.route('/tag/<string:tag>/page/<int:page>')
-@minimal.route('/<int:year>/<int:month>')
-@minimal.route('/<int:year>/<int:month>/page/<int:page>')
-@minimal.route('/page/<int:page>')
+@minimal.route('/category/<string:category>/')  # TODO: Handle recursive names.
+@minimal.route('/category/<string:category>/page/<int:page>/')
+@minimal.route('/tag/<string:tag>/')
+@minimal.route('/tag/<string:tag>/page/<int:page>/')
+@minimal.route('/<int:year>/<int:month>/')
+@minimal.route('/<int:year>/<int:month>/page/<int:page>/')
+@minimal.route('/page/<int:page>/')
 @minimal.route("/")
 def post_list(category=None, page=0, year=0, month=0, tag=None):
     blog = Blog.query.all()[0]
@@ -53,7 +53,7 @@ def post_list(category=None, page=0, year=0, month=0, tag=None):
                            )
 
 
-@minimal.route("/<string:slug>")
+@minimal.route("/<string:slug>/")
 def post_single(slug=None):
     blog = Blog.query.all()[0]
 
@@ -73,7 +73,7 @@ def post_single(slug=None):
 
 
 
-@minimal.route("/archive")
+@minimal.route("/archive/")
 def menu():
     blog = Blog.query.all()[0]
 
@@ -126,11 +126,6 @@ def menu():
                            tags=tags,
                            menu_pages=_get_menu_pages()
                            )
-
-@minimal.route("/uploads/<filename>")
-def uploaded_file(filename):
-    app = current_app._get_current_object()
-    return send_from_directory(app.config["UPLOADS_PATH"], filename)
 
 
 def _get_menu_pages():
