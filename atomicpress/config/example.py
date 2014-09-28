@@ -8,4 +8,6 @@ DEBUG = False
 SECRET_KEY = "secret key"
 SQLALCHEMY_DATABASE_URI = "sqlite:////%s" % DB_PATH
 STATIC_URL = "/static/"
-UPLOADS_URL = "/uploads/"
+UPLOADS_URL = "/blog/uploads/"
+
+FREEZER_DESTINATION = PROJECT_ROOT.child("build")
