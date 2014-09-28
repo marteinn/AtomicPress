@@ -1,6 +1,23 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+minimal
+----------
+
+
+"""
+
 from flask import Blueprint
 
-__author__ = 'martinsandstrom'
+
+__title__ = 'minimal'
+__version__ = '1.0'
+__build__ = 10
+__author__ = 'Martin Sandström'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2014 Martin Sandström'
+
 
 minimal = Blueprint('minimal', __name__,
                     static_folder="static/builds",

@@ -10,9 +10,6 @@ from wordflask.models import Blog, Post, PostStatus, PostType, Category, Tag
 from wordflask.utils import date as dateutils
 
 
-__author__ = 'martinsandstrom'
-
-
 """
 2013/11/
 2013/11/page/2/
