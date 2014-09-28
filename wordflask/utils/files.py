@@ -3,8 +3,6 @@ from tempfile import NamedTemporaryFile
 import requests
 from werkzeug.test import File
 
-__author__ = 'martinsandstrom'
-
 
 def generate_image_from_url(url=None, timeout=30):
     """

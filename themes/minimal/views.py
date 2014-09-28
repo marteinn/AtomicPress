@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import calendar
 import math
 import datetime
@@ -9,18 +10,6 @@ from themes.minimal import minimal, PAGE_SIZE
 from wordflask.models import Blog, Post, PostStatus, PostType, Category, Tag
 from wordflask.utils import date as dateutils
 
-
-"""
-2013/11/
-2013/11/page/2/
-/page/2/
-
-category/action-script/
-category/action-script/page/2/
-
-tag/postgresql/
-tag/postgresql/page/2/
-"""
 
 @minimal.route('/category/<string:category>')  # TODO: Handle recursive names.
 @minimal.route('/category/<string:category>/page/<int:page>')

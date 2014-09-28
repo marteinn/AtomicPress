@@ -1,10 +1,8 @@
-from HTMLParser import HTMLParser
 from app import app
 import re
 import requests
 import markdown
 
-__author__ = 'martinsandstrom'
 
 gist_match = re.compile("\[gist.id=(\w*?)\]")
 code_match = re.compile(r"\[code[^\]]*](.+?)\[/code\]",

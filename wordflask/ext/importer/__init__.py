@@ -9,8 +9,6 @@ from wordflask.app import db, app
 from wordflask.models import Blog, Author, Category, Tag, Post
 from wordflask.utils.files import generate_image_from_url
 
-__author__ = 'martinsandstrom'
-
 
 importer = Blueprint("importer", __name__)
 ImporterCommand = Manager(usage='Perform wordpress import')
@@ -115,7 +113,6 @@ def insert(data):
             type=post_data["post_type"],
         )
 
-        """
         # Save attachment
         if post_data["post_type"] == "attachment":
             file_url = post_data["guid"]
@@ -140,7 +137,6 @@ def insert(data):
                     _save_image(size_file_url)
 
             post.guid = relative_path
-        """
 
         for name in post_data["categories"]:
             category = category_reference[name]

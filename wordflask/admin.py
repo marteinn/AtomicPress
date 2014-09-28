@@ -7,9 +7,6 @@ from wordflask import models
 from wordflask.app import db
 
 
-__author__ = 'martinsandstrom'
-
-
 class HomeView(AdminIndexView):
     @expose("/")
     def index(self):

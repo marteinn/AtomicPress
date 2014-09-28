@@ -1,9 +1,3 @@
-from datetime import datetime
-
-
-__author__ = 'martinsandstrom'
-
-
 def get_months_apart(d1, d2):
     """
     Get amount of months between dates

@@ -4,8 +4,6 @@ from flask_script import prompt_bool
 from wordflask.admin import create_admin
 from wordflask.app import manager, db, app
 
-__author__ = 'martinsandstrom'
-
 
 @manager.command
 def create_db(initial_data=False):
