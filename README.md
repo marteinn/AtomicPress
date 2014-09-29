@@ -20,6 +20,16 @@ Flask-Freeze, Flask-Admin, Flask-Migrations, Flask-SQLAlchemy, to mention a few.
 To install AtomicPress you'll need python 2.7 and pip.
 
 
+## Filters
+
+### code
+
+	[code][/code]
+	
+### gist
+
+	[gist id="asdasd"]
+
 ## Commands
 
 ### Updating from a older version
