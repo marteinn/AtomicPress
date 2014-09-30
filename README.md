@@ -47,6 +47,11 @@ AtomicPress uses wpparser to import data from wordpress export files.
 ### Exporting
 
     python manage.py exporter export
+    
+    
+### Sync through ftp
+
+	python manage.py ftp sync
 
 
 ## Contributing

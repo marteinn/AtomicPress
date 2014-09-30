@@ -15,10 +15,10 @@ from flask_script import Manager
 
 
 ftp = Blueprint("ftp", __name__)
-FtpUploadCommand = Manager(usage='Upload files to ftp path')
+FtpSyncCommand = Manager(usage='Sync files against ftp')
 
-@FtpUploadCommand.command
-def upload():
+@FtpSyncCommand.command
+def sync():
     ftpsync.set_default(app.config["FTP_HOST"], app.config["FTP_USERNAME"],
                         app.config["FTP_PASSWORD"])
 

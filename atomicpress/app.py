@@ -35,12 +35,12 @@ def run():
     from atomicpress import context_processors
     from atomicpress.ext.importer import ImporterCommand
     from atomicpress.ext.exporter import ExporterCommand
-    from atomicpress.ext.ftp import FtpUploadCommand
+    from atomicpress.ext.ftp import FtpSyncCommand
 
     manager.add_command('db', MigrateCommand)
     manager.add_command('importer', ImporterCommand)
     manager.add_command('exporter', ExporterCommand)
-    manager.add_command('ftp', FtpUploadCommand)
+    manager.add_command('ftp', FtpSyncCommand)
 
     manager.run()
 

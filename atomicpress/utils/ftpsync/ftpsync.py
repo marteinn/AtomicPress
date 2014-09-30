@@ -79,4 +79,4 @@ class FtpSync():
                                      open(local_path, "rb"), 1024)
 
         except Exception, e:
-            logger.debug("%s - %s" % (e, str(e)))
+            logger.warn("%s - %s" % (e, str(e)))
