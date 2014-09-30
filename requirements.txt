@@ -7,6 +7,7 @@ Flask-Script==2.0.5
 Frozen-Flask==0.11
 Jinja2==2.7.3
 Mako==1.0.0
+Markdown==2.5.1
 MarkupSafe==0.23
 SQLAlchemy==0.9.7
 Unipath==1.0
