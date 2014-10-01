@@ -18,9 +18,9 @@
 
     <div class="post-content text-medium markdown">
         {% if post.markdown %}
-            {{ post.content|markdown_content|gist|code|safe }}
+            {{ post.content|markdown_content|gist|code|safe|image }}
         {% else %}
-            {{ post.content|gist|code|safe }}
+            {{ post.content|gist|code|safe|image }}
         {% endif %}
     </div>
 

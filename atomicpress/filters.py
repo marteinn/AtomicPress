@@ -6,8 +6,10 @@ import requests
 import markdown
 
 
-gist_match = re.compile("\[gist.id=(\w*?)\]")
-code_match = re.compile(r"\[code[^\]]*](.+?)\[/code\]",
+IMAGE_MATCH = re.compile("\[(image|img).src=\"(.*?)\"\]",
+                         re.MULTILINE | re.DOTALL)
+GIST_MATCH = re.compile("\[gist.id=(\w*?)\]")
+CODE_MATCH = re.compile(r"\[code[^\]]*](.+?)\[/code\]",
                         re.MULTILINE | re.DOTALL)
 
 _gist_cache = {}
@@ -22,7 +24,7 @@ def markdown_filter(s):
 @app.template_filter('code')
 def code_filter(s):
     s = "\n".join(s.splitlines())
-    s = re.sub(code_match, _handle_code, s)
+    s = re.sub(CODE_MATCH, _handle_code, s)
     return s
 
 
@@ -33,7 +35,7 @@ def _handle_code(s):
 
 @app.template_filter('gist')
 def gist_filter(s):
-    s = re.sub(gist_match, _handle_gist, s)
+    s = re.sub(GIST_MATCH, _handle_gist, s)
     return s
 
 
@@ -63,3 +65,13 @@ def _handle_gist(s):
               raw_content)
 
 
+@app.template_filter('image')
+def image_filter(s):
+    s = re.sub(IMAGE_MATCH, _handle_image, s)
+    return s
+
+
+def _handle_image(s):
+    file_name = s.groups(1)[1]
+    uploads_url = app.config["UPLOADS_URL"]
+    return "%s%s" % (uploads_url, file_name)
