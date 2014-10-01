@@ -8,18 +8,14 @@ This module exports the blog as static html files.
 """
 
 import os
-from flask import Blueprint
 from flask_frozen import Freezer
 from flask_script import Manager
 
 
-exporter = Blueprint("exporter", __name__)
 ExporterCommand = Manager(usage='Export blog as static files')
 
-
-@ExporterCommand.option('-f', '--file', dest='path', default=None,
-                      help="Export blog as html")
-def export(path=None):
+@ExporterCommand.command
+def export():
     from atomicpress.app import app
 
     freezer = Freezer(app)
@@ -31,4 +27,4 @@ def export(path=None):
             if uploads_file.find(".") > 0:
                 yield {'filename': uploads_file}
 
-    freezer.run()
+    freezer.freeze()

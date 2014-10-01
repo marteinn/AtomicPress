@@ -36,11 +36,13 @@ def run():
     from atomicpress.ext.importer import ImporterCommand
     from atomicpress.ext.exporter import ExporterCommand
     from atomicpress.ext.ftp import FtpSyncCommand
+    from atomicpress.ext.s3 import S3SyncCommand
 
     manager.add_command('db', MigrateCommand)
     manager.add_command('importer', ImporterCommand)
     manager.add_command('exporter', ExporterCommand)
     manager.add_command('ftp', FtpSyncCommand)
+    manager.add_command('s3', S3SyncCommand)
 
     manager.run()
 

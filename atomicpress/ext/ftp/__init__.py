@@ -10,11 +10,9 @@ Upload blog to ftp account.
 from atomicpress.utils import ftpsync
 from atomicpress.app import app
 
-from flask import Blueprint
 from flask_script import Manager
 
 
-ftp = Blueprint("ftp", __name__)
 FtpSyncCommand = Manager(usage='Sync files against ftp')
 
 @FtpSyncCommand.command
