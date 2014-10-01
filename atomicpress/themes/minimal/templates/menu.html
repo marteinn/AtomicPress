@@ -18,7 +18,7 @@
             <ul class="l-grid-2">
                 {% for page in pages %}
                 <li>
-                    <a href="{{ url_for("minimal.post_single", slug=page.slug) }}">
+                    <a href="{{ url_for("minimal.post_single", slug=page.name) }}">
                         {{ page.title }}
                     </a>
                 </li>
