@@ -24,9 +24,12 @@ To install AtomicPress you'll need python 2.7 and pip.
 
 ### code
 
-	[code][/code]
+	[code]var a = 1;[/code]
+	>>> <pre class="code">var a = 1;</pre>
 	
 ### gist
+
+Embeds a gist to content.
 
 	[gist id="asdasd"]
 	
@@ -38,10 +41,6 @@ Embed image path.
 	>>> <img src="/uploads/myimage.jpg" />
 
 ## Commands
-
-### Updating from a older version
-
-    python manage.py upgrade -d=atomicpress/migrations/
 
 
 ### Importing
@@ -55,10 +54,19 @@ AtomicPress uses wpparser to import data from wordpress export files.
 
     python manage.py exporter export
     
+### Sync through S3
+
+	python manage.py s3 sync
     
-### Sync through ftp
+### Sync through FTP
 
 	python manage.py ftp sync
+	
+
+### Updating from a older version
+
+    python manage.py upgrade -d=atomicpress/migrations/
+
 
 
 ## Contributing
