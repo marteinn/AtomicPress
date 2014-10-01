@@ -50,7 +50,7 @@ class FtpSync():
 
         local_files = os.listdir(local_path)
 
-        if self._file_exist(destination_path):
+        if not self._file_exist(destination_path):
             self.conn.mkd(destination_path)
 
         self.conn.cwd(destination_path)
