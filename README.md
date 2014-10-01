@@ -29,6 +29,13 @@ To install AtomicPress you'll need python 2.7 and pip.
 ### gist
 
 	[gist id="asdasd"]
+	
+### image
+
+Embed image path.
+
+	<img src="[image id="myimage.jpg"]" />
+	>>> <img src="/uploads/myimage.jpg" />
 
 ## Commands
 
