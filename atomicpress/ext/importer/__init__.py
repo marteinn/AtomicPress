@@ -10,7 +10,6 @@ This module handles wordpress imports by exposing the import command.
 from datetime import datetime
 import re
 import os
-from flask import Blueprint
 from flask_script import Manager
 from unipath import Path
 import wpparser
@@ -19,7 +18,6 @@ from atomicpress.models import Blog, Author, Category, Tag, Post
 from atomicpress.utils.files import generate_image_from_url
 
 
-importer = Blueprint("importer", __name__)
 ImporterCommand = Manager(usage='Perform wordpress import')
 
 @ImporterCommand.option('-f', '--file', dest='path', default=None,
