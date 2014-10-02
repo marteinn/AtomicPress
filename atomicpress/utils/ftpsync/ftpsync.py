@@ -26,6 +26,38 @@ class FtpSync():
     def _close(self):
         self.conn.close()
 
+    def remove_dir(self, destination_path):
+        """
+        Remove folder. Based on https://gist.github.com/artlogic/2632647.
+        """
+
+        wd = self.conn.pwd()
+
+        try:
+            names = self.conn.nlst(destination_path)
+        except ftplib.all_errors as e:
+            # some FTP servers complain when you try and list non-existent paths
+            logger.debug('FtpRmTree: Could not remove {0}: {1}'.format(
+                destination_path, e))
+            return
+
+        for name in names:
+            if os.path.split(name)[1] in ('.', '..'):
+                continue
+
+            try:
+                self.conn.cwd(name)  # if we can cwd to it, it's a folder
+                self.conn.cwd(wd)  # don't try a nuke a folder we're in
+                self.remove_dir(name)
+            except ftplib.all_errors:
+                self.conn.delete(name)
+
+        try:
+            self.conn.rmd(destination_path)
+        except ftplib.all_errors as e:
+            logger.debug('remove_dir: Could not remove {0}: {1}'.format(
+                destination_path, e))
+
     def sync_dir(self, local_path, destination_path, override=True):
         self._login()
 
@@ -34,7 +66,7 @@ class FtpSync():
 
         if override:
             if self._file_exist(target_dir):
-                self.conn.rmd(target_dir)
+                self.remove_dir(target_dir)
 
         self._upload_dir(local_dir, target_dir)
         self._close()
@@ -43,7 +75,7 @@ class FtpSync():
         destination_name = destination_path.name
         parent_dir = destination_path.ancestor(1)
 
-        return destination_name in self.conn.nlst(parent_dir)
+        return destination_path in self.conn.nlst(parent_dir)
 
     def _upload_dir(self, local_path, destination_path):
         logger.info("- Uploading dir %s" % (local_path.name,))
