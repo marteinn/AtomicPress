@@ -74,4 +74,4 @@ def image_filter(s):
 def _handle_image(s):
     file_name = s.groups(1)[1]
     uploads_url = app.config["UPLOADS_URL"]
-    return "%s%s" % (uploads_url, file_name)
+    return "%s/%s" % (uploads_url, file_name)
