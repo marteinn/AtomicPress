@@ -3,8 +3,7 @@
 """
 atomicpress.ext.ftp
 ----------
-Upload blog to ftp account.
-
+Upload blog export to ftp.
 """
 
 from atomicpress.utils import ftpsync

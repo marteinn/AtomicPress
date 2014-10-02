@@ -4,12 +4,12 @@
 atomicpress.ext.importer
 ----------
 This module handles wordpress imports by exposing the import command.
-
 """
 
-from datetime import datetime
 import re
 import os
+from datetime import datetime
+from flask import logging
 from flask_script import Manager
 from unipath import Path
 import wpparser
@@ -18,21 +18,23 @@ from atomicpress.models import Blog, Author, Category, Tag, Post
 from atomicpress.utils.files import generate_image_from_url
 
 
+logger = logging.getLogger(__name__)
+
 ImporterCommand = Manager(usage='Perform wordpress import')
 
 @ImporterCommand.option('-f', '--file', dest='path', default=None,
                       help="Import wordpress file")
 def import_blog(path=None):
-    print "Parsing file..."
+    logger.info("Parsing file...")
     parsed_data = wpparser.parse(path)
 
-    print "Inserting data..."
+    logger.info("Inserting data...")
     insert(parsed_data)
 
 
 def insert(data):
     # Blog
-    print "Adding blog..."
+    logger.info("Adding blog...")
 
     blog_data = data["blog"]
 
@@ -63,13 +65,13 @@ def insert(data):
     db.session.commit()
 
     # Categories
-    print "Adding categories..."
+    logger.info("Adding categories...")
 
     category_reference = _insert_categories(data["categories"])
     db.session.commit()
 
     # Tags
-    print "Adding tags..."
+    logger.info("Adding tags...")
 
     tag_reference = {}
     for tag_data in data["tags"]:
@@ -84,7 +86,7 @@ def insert(data):
     db.session.commit()
 
     # Posts
-    print "Inserting %s posts..." % len(data["posts"])
+    logger.info("Inserting %s posts..." % len(data["posts"]))
 
     created_posts = []
     post_id_reference = {}
@@ -92,7 +94,7 @@ def insert(data):
     data["posts"] = data["posts"][::-1]
 
     for post_data in data["posts"]:
-        print "Adding %s..." % post_data["title"]
+        logger.info("Adding %s..." % post_data["title"])
 
         author = author_reference[post_data["creator"]]
 

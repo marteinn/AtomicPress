@@ -4,7 +4,6 @@
 atomicpress.ext.exporter
 ----------
 This module exports the blog as static html files.
-
 """
 
 import os

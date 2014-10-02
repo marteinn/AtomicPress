@@ -4,7 +4,6 @@
 atomicpress.ext.prefill
 ----------
 Insert initial dummy data.
-
 """
 
 from atomicpress.app import db
@@ -12,8 +11,8 @@ from atomicpress.models import (
     Blog, Author, Category, Tag, Post, PostStatus, PostType)
 from flask_script import Manager
 
-PreFillCommand = Manager(usage='Insert initial dummy data')
 
+PreFillCommand = Manager(usage='Insert initial dummy data')
 
 @PreFillCommand.command
 def fill():

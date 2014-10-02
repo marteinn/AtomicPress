@@ -3,9 +3,9 @@
 """
 atomicpress.ext.s3
 ----------
-Upload blog to a s3 bucket
-
+Upload blog export to s3
 """
+
 import os
 import logging
 from unipath import Path
