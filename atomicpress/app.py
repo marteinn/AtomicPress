@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+import importlib
 from flask_migrate import Migrate, MigrateCommand
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -16,9 +18,11 @@ app.config.update(dict(
     STATIC_URL='/static/',
     UPLOADS_URL='/uploads/',
     GIST_BACKEND_RENDERING=True,
+    THEME="atomicpress.themes.minimal"
 ))
 
-app.config.from_envvar('ATOMICPRESS_SETTINGS', silent=False)
+settings_module = os.environ.get("ATOMICPRESS_SETTINGS")
+app.config.from_object(settings_module)
 
 db = SQLAlchemy()
 db.init_app(app)
@@ -29,6 +33,7 @@ manager = Manager(app)
 
 
 def run():
+    from atomicpress import models
     from atomicpress import views
     from atomicpress import filters
     from atomicpress import commands
@@ -45,6 +50,10 @@ def run():
     manager.add_command('ftp', FtpSyncCommand)
     manager.add_command('s3', S3SyncCommand)
     manager.add_command('prefill', PreFillCommand)
+
+    # Activate theme
+    theme = importlib.import_module(app.config["THEME"])
+    activate_theme(theme.theme)
 
     manager.run()
 

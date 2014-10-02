@@ -6,19 +6,19 @@ import datetime
 
 from flask import render_template
 from sqlalchemy import desc, asc, func
-from atomicpress.themes.minimal import minimal, PAGE_SIZE
+from atomicpress.themes.minimal import theme, PAGE_SIZE
 from atomicpress.models import Blog, Post, PostStatus, PostType, Category, Tag
 from atomicpress.utils import date as dateutils
 
 
-@minimal.route('/category/<string:category>/')  # TODO: Handle recursive names.
-@minimal.route('/category/<string:category>/page/<int:page>/')
-@minimal.route('/tag/<string:tag>/')
-@minimal.route('/tag/<string:tag>/page/<int:page>/')
-@minimal.route('/<int:year>/<int:month>/')
-@minimal.route('/<int:year>/<int:month>/page/<int:page>/')
-@minimal.route('/page/<int:page>/')
-@minimal.route("/")
+@theme.route('/category/<string:category>/')  # TODO: Handle recursive names.
+@theme.route('/category/<string:category>/page/<int:page>/')
+@theme.route('/tag/<string:tag>/')
+@theme.route('/tag/<string:tag>/page/<int:page>/')
+@theme.route('/<int:year>/<int:month>/')
+@theme.route('/<int:year>/<int:month>/page/<int:page>/')
+@theme.route('/page/<int:page>/')
+@theme.route("/")
 def post_list(category=None, page=0, year=0, month=0, tag=None):
     blog = Blog.query.all()[0]
     posts = Post.query.order_by(desc(Post.date)).\
@@ -52,7 +52,7 @@ def post_list(category=None, page=0, year=0, month=0, tag=None):
                            )
 
 
-@minimal.route("/<string:slug>/")
+@theme.route("/<string:slug>/")
 def post_single(slug=None):
     blog = Blog.query.all()[0]
 
@@ -72,7 +72,7 @@ def post_single(slug=None):
 
 
 
-@minimal.route("/archive/")
+@theme.route("/archive/")
 def menu():
     blog = Blog.query.all()[0]
 

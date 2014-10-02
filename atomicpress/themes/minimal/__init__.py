@@ -19,13 +19,12 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2014 Martin Sandström'
 
 
-minimal = Blueprint('minimal', __name__,
-                    static_folder="static/builds",
-                    static_url_path='/static/minimal',
-                    template_folder='templates')
-
 PAGE_SIZE = 10
 GA_TRACKING = ""
 
-import views
+theme = Blueprint('minimal', __name__,
+                  static_folder="static/builds",
+                  static_url_path='/static/minimal',
+                  template_folder='templates')
 
+import views
