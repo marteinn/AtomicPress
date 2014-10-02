@@ -62,7 +62,10 @@ AtomicPress uses wpparser to import data from wordpress export files.
 
 	python manage.py ftp sync
 	
+### Prefill db with initial data
 
+	python manage.py prefill fill
+	
 ### Updating from a older version
 
     python manage.py upgrade -d=atomicpress/migrations/
