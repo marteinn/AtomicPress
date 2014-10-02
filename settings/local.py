@@ -1,23 +1,14 @@
 import os
-from unipath import Path
-import dotenv
+from .base import *
 
 
-PROJECT_ROOT = Path(__file__).ancestor(2)
-DB_PATH = PROJECT_ROOT.child("blog.db")
-UPLOADS_PATH = PROJECT_ROOT.child("uploads")
-
-dotenv.load_dotenv(PROJECT_ROOT.child(".env"))
-
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.environ.get("SECRET_KEY")
-SQLALCHEMY_DATABASE_URI = "sqlite:////%s" % DB_PATH
-STATIC_URL = "/static/"
-UPLOADS_URL = "/uploads/"
+FREEZER_BASE_URL = Path("/")
+STATIC_URL = FREEZER_BASE_URL.child("static")
+UPLOADS_URL = FREEZER_BASE_URL.child("uploads")
 GIST_BACKEND_RENDERING = False
-THEME = "atomicpress.themes.minimal"
 
-FREEZER_BASE_URL = "/blog/"
 FREEZER_DESTINATION = PROJECT_ROOT.child("blog")
 
 GA_TRACKING = os.environ.get("GA_TRACKING")
