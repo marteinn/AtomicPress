@@ -22,6 +22,11 @@ app.config.update(dict(
 ))
 
 settings_module = os.environ.get("ATOMICPRESS_SETTINGS")
+
+if not settings_module:
+    app.logger.warning("ATOMICPRESS_SETTINGS is empty, please specify a "
+        "settings file")
+
 app.config.from_object(settings_module)
 
 db = SQLAlchemy()
@@ -50,8 +55,6 @@ def setup(init_run=False):
     manager.add_command('ftp', FtpSyncCommand)
     manager.add_command('s3', S3SyncCommand)
     manager.add_command('prefill', PreFillCommand)
-
-    # configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
 
     # Activate theme
     theme = importlib.import_module(app.config["THEME"])
