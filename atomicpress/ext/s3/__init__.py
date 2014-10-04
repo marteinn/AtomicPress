@@ -17,7 +17,7 @@ from atomicpress.app import app
 from flask_script import Manager
 
 
-logger = logging.getLogger(__name__)
+logger = app.logger
 
 S3SyncCommand = Manager(usage='Sync files to s3')
 
@@ -42,4 +42,6 @@ def sync():
             k.key = rel_path
             k.set_contents_from_filename(file_path)
             b.set_acl("public-read", k.key)
+
+    logger.info("Sync complete!")
 

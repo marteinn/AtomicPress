@@ -18,7 +18,7 @@ from atomicpress.models import Blog, Author, Category, Tag, Post
 from atomicpress.utils.files import generate_image_from_url
 
 
-logger = logging.getLogger(__name__)
+logger = app.logger
 
 ImporterCommand = Manager(usage='Perform wordpress import')
 
@@ -172,6 +172,8 @@ def insert(data):
             created_post.parent = parent_post
 
     db.session.commit()
+
+    logger.info("Import complete!")
 
 
 def _clean_post_content(blog_url, content):
