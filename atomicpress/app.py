@@ -32,7 +32,7 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 
 
-def run():
+def setup(init_run=False):
     from atomicpress import models
     from atomicpress import views
     from atomicpress import filters
@@ -51,10 +51,17 @@ def run():
     manager.add_command('s3', S3SyncCommand)
     manager.add_command('prefill', PreFillCommand)
 
+    # configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+
     # Activate theme
     theme = importlib.import_module(app.config["THEME"])
     activate_theme(theme.theme)
 
+    if init_run:
+        run()
+
+
+def run():
     manager.run()
 
 
