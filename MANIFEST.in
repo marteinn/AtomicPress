@@ -3,3 +3,4 @@ recursive-include atomicpress/migrations *
 recursive-include atomicpress/migrations/versions *
 recursive-include atomicpress/templates *
 recursive-include atomicpress/themes/minimal/static *
+recursive-include atomicpress/themes/minimal/templates *
