@@ -50,6 +50,29 @@ AtomicPress uses wpparser to import data from wordpress export files.
     python manage.py importer import_blog -f=./data/blog.wordpress.2014-09-25.xml
 
 
+### Create database
+
+	python mange.py create_Db
+	
+### Remove database
+
+	python mange.py drop_db
+	
+**Options**
+
+	-r remove
+	-f force
+	
+### Runserver
+
+	python manage.py runserver 
+	
+**Options**
+
+	-a admin
+	-t toolbar
+	-d debug
+
 ### Exporting
 
     python manage.py exporter export

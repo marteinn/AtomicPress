@@ -33,11 +33,3 @@ def runserver(admin=False, toolbar=False, debug=False):
         create_admin()
 
     app.run(debug=debug)
-
-@manager.command
-def build():
-    pass
-
-@manager.command
-def deploy():
-    pass
