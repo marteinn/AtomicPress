@@ -15,9 +15,9 @@ if sys.argv[-1] == "publish":
 
 EXCLUDE_FROM_PACKAGES = []
 
-packages = find_packages('*', '*.html')
+packages = find_packages()
 
-with open('README.md') as f:
+with open('README.rst') as f:
     readme = f.read()
 
 requires = parse_requirements("requirements.txt")
