@@ -15,7 +15,7 @@ if sys.argv[-1] == "publish":
 
 EXCLUDE_FROM_PACKAGES = []
 
-packages = find_packages()
+packages = find_packages('*', '*.html')
 
 with open('README.md') as f:
     readme = f.read()

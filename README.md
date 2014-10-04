@@ -13,7 +13,7 @@ Flask-Freeze, Flask-Admin, Flask-Migrations, Flask-SQLAlchemy, to mention a few.
 - Import from Wordpress
 - Gist integration
 - Admin interface
-
+- Sync your static files with either ftp or to Amazon S3
 
 ## Getting started
 
