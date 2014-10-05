@@ -10,8 +10,14 @@
     {% if post.categories|length %}
         <div class="breadcrumb text-smaller">
             <ul>
-                <li><a href="{{ url_for("minimal.post_list") }}">Home</a></li>
-                <li><a href="{{ url_for("minimal.post_list", category=post.categories[0].slug) }}">{{ post.categories[0].name }}</a></li>
+                <li>
+                    <a href="{{ url_for("minimal.post_list") }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url_for("minimal.post_list", category=post.categories[0].slug) }}">
+                        {{ post.categories[0].name }}
+                    </a>
+                </li>
             </ul>
         </div>
     {% endif %}
