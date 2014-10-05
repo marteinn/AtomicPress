@@ -1,8 +1,7 @@
 # AtomicPress
 
-AtomicPress is a static blog generator modeled after WordPress data models.
-It is built in Flask and takes advantage of it's awesome eco-system such as
-Flask-Freeze, Flask-Admin, Flask-Migrations, Flask-SQLAlchemy, to mention a few.
+AtomicPress is a static blog generator for python developers that don't want the Wordpress security hassle.
+It is built in Flask and takes advantage of it's awesome eco-system such as Flask-Freeze, Flask-Admin, Flask-Migrations, Flask-SQLAlchemy, to mention a few. It utilizes SQLite for its database needs.
 
 
 ## Features
@@ -13,22 +12,60 @@ Flask-Freeze, Flask-Admin, Flask-Migrations, Flask-SQLAlchemy, to mention a few.
 - Import from Wordpress
 - Gist integration
 - Admin interface
-- Sync your generated blog with either ftp or to Amazon S3
+- Build you own extensions
+- Sync your generated blog with either FTP or to Amazon S3
+
+
+## Why not Pelican/Jekyll/Octopress/Hyde? 
+
+1. AtomicPress is built in Python.
+2. It is built upon Flask, which is easy to extend.
+3. It's built to make Wordpress import simple.
 
 
 ## Getting started
 
-To install AtomicPress you'll need python 2.7 and pip.
+To install AtomicPress you'll need python 2.7, virtualenv and pip.
+
+If you want a quickstart, just copy the example `base-example`, cd and type `make init` and you are ready to go.
 
 
-## TODO:Settings
+## Settings
+
+- SQLALCHEMY_DATABASE_URI: Path to your sqlite database.
+- DEBUG: Show errors, should be deactivated for live environments.
+- SECRET_KEY: Session key for signing.
+- STATIC_URL: Path to the static content, default: `/static/`
+- UPLOADS_URL: Path to the uploads folder, defult `/uploads/`
+- THEME: The theme you want to run, default is `atomicpress.themes.minimal`.
+- GIST_BACKEND_RENDERING: If you want to render a `<noscript></noscript>` that contains the gist content as pure text. Default is `False`
+- EXTENSIONS: A array with the extensions you want to run.
+
+### S3
+- AWS_ACCESS_KEY_ID: Access key id to aws.
+- AWS_ACCESS_KEY: Access key to aws.
+- S3_BUCKET: The bucket you want to deploy to.
+- S3_DESTINATION: The path within the bucket you want to deploy to.
+
+### FTP
+
+- FTP_HOST: Hostname to your ftp account.
+- FTP_USERNAME: Ftp username.
+- FTP_PASSWORD: Ftp password.
+- FTP_DESTINATION: Deploy subpath destination.
+
+## Admin
+
+AtomicPress uses Flask-Admin to show a admin interface, you can access it by running `runserver` with the argument `-a`. Per default is located at `http://localhost:5000/admin/`.
 
 
 ## Themes
 
-AtomicPress ships with the minimal theme per default, if you would like to make your own, just specify the path in your settings file.
+AtomicPress ships with the theme minimal per default, if you would like to make your own, just specify the path in your settings file.
 
 	THEME=mytheme
+	
+To make your own, just look at the theme [minimal](https://github.com/marteinn/AtomicPress/tree/develop/atomicpress/themes/minimal) that ships with AtomicPress.
 
 ## Filters
 
@@ -56,22 +93,30 @@ Embed image path.
 
 #### Create database
 
+Creates the database and stores it according to the SQLALCHEMY_DATABASE_UR path.
+
 	python mange.py create_db
 	
 #### Remove database
+
+Removes the sqlite database file.
 
 	python mange.py drop_db
 	
 **Options**
 
-	-r remove
-	-f force
+	-r Remove the sqlite file when done.
+	-f Do now show the agreement promp.
 	
 #### Updating from a older version
+
+Upgrading from a older version? Run this to make sure the schema is up to date.
 
     python manage.py upgrade -d=atomicpress/migrations/
     
 ### Prefill db with initial data
+
+Adds initial data to the database, perfect when you want to try out AtomicPress.
 
 	python manage.py prefill fill
 	
@@ -81,6 +126,8 @@ Embed image path.
 
 #### Runserver
 
+Creates a lightweight http server running the web application.
+
 	python manage.py runserver 
 	
 **Options**
@@ -88,16 +135,19 @@ Embed image path.
 	-a admin
 	-t toolbar
 	-d debug
+	
+	
+Note: It is possible to run AtomicPress as a standard wsgi application.
 
 ### Import
 
-#### Importing
-
-AtomicPress uses wpparser to import data from wordpress export files.
+AtomicPress uses wpparser to import data from wordpress export files. Just specify the path to your database export and you are ready to go.
 
     python manage.py importer import_blog -f=./data/blog.wordpress.2014-09-25.xml
 
 ### Export
+
+Create a static package of you blog, that are ready to be deployed.
 
     python manage.py exporter export
 
@@ -105,9 +155,13 @@ AtomicPress uses wpparser to import data from wordpress export files.
     
 #### S3
 
+Send the exported static files to a AWS S3 bucket.
+
 	python manage.py s3 sync
     
 #### FTP
+
+Send the files a your ftp account.
 
 	python manage.py ftp sync
 	

@@ -21,8 +21,6 @@ app.config.update(dict(
     SQLALCHEMY_DATABASE_URI="",
     DEBUG=True,
     SECRET_KEY='',
-    USERNAME='admin',
-    PASSWORD='default',
     STATIC_URL='/static/',
     UPLOADS_URL='/uploads/',
     GIST_BACKEND_RENDERING=True,
