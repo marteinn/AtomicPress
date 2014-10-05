@@ -3,11 +3,10 @@
 """
 atomicpress.ext.s3
 ----------
-Upload blog export to s3
+Deplys the generated static files to Amazon S3.
 """
 
 import os
-import logging
 from unipath import Path
 import boto
 from boto.s3.key import Key
@@ -17,9 +16,10 @@ from atomicpress.app import app
 from flask_script import Manager
 
 
+S3SyncCommand = Manager(usage='Sync files to s3')
+
 logger = app.logger
 
-S3SyncCommand = Manager(usage='Sync files to s3')
 
 @S3SyncCommand.command
 def sync():

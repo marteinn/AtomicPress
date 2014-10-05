@@ -3,16 +3,18 @@
 """
 atomicpress.ext.ftp
 ----------
-Upload blog export to ftp.
+Deplys the generated static files to a ftp account.
 """
 
 from atomicpress.utils import ftpsync
 from atomicpress.app import app
-
 from flask_script import Manager
 
 
 FtpSyncCommand = Manager(usage='Sync files against ftp')
+
+logger = app.logger
+
 
 @FtpSyncCommand.command
 def sync():
@@ -21,3 +23,5 @@ def sync():
 
     ftpsync.sync_folder(app.config["FREEZER_DESTINATION"],
                         app.config["FTP_DESTINATION"])
+
+    logger.info("Sync complete!")

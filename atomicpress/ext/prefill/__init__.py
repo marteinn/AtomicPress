@@ -3,7 +3,8 @@
 """
 atomicpress.ext.prefill
 ----------
-Insert initial dummy data.
+This extensions makes it possible to generate dummy data, as a simple way to
+try out the system and see how ut behaves.
 """
 
 from atomicpress.app import db, app
@@ -15,6 +16,7 @@ from flask_script import Manager
 PreFillCommand = Manager(usage='Insert initial dummy data')
 
 logger = app.logger
+
 
 @PreFillCommand.command
 def fill():

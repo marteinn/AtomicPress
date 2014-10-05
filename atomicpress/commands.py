@@ -29,8 +29,6 @@ def drop_db(remove=False, force=False):
         logger.info("Database file was removed")
 
 
-
-
 @manager.command
 def runserver(admin=False, toolbar=False, debug=False):
     if toolbar:

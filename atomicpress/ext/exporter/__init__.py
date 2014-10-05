@@ -3,20 +3,22 @@
 """
 atomicpress.ext.exporter
 ----------
-This module exports the blog as static html files.
+This module takes the blog data and makes deployable static files from it.
 """
 
 import os
 from flask_frozen import Freezer
 from flask_script import Manager
+from atomicpress.app import app
 
 
 ExporterCommand = Manager(usage='Export blog as static files')
 
+logger = app.logger
+
+
 @ExporterCommand.command
 def export():
-    from atomicpress.app import app
-
     freezer = Freezer(app)
 
     @freezer.register_generator
@@ -27,3 +29,4 @@ def export():
                 yield {'filename': uploads_file}
 
     freezer.freeze()
+    logger.info("Blog was successfully exported!")
