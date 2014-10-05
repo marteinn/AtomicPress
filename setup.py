@@ -13,8 +13,6 @@ if sys.argv[-1] == "publish":
     sys.exit()
 
 
-EXCLUDE_FROM_PACKAGES = []
-
 packages = find_packages()
 
 with open('README.md') as f:
@@ -25,7 +23,8 @@ install_requires = [str(ir.req) for ir in requires]
 
 
 long_description = """
-AtomicPress is a static blog generator modeled after WordPress data models.
+AtomicPress is a static blog generator for python developers that don't want
+the WordPress security hassle.
 
 ---
 
@@ -37,8 +36,8 @@ AtomicPress is a static blog generator modeled after WordPress data models.
 setup(
     name="atomicpress",
     version=atomicpress.__version__,
-    description=("AtomicPress is a static blog generator modeled after "
-                 "WordPress data models."),
+    description=("AtomicPress is a static blog generator for python developers "
+                 "that don't want the WordPress security hassle."),
     long_description=long_description,
     author="Martin Sandström",
     author_email="martin@marteinn.se",
