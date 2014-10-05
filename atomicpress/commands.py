@@ -7,9 +7,12 @@ from atomicpress.admin import create_admin
 from atomicpress.app import manager, db, app
 
 
+logger = app.logger
+
 @manager.command
-def create_db(initial_data=False):
+def create_db():
     db.create_all()
+    logger.info("Database was created")
 
 
 @manager.command
@@ -19,9 +22,13 @@ def drop_db(remove=False, force=False):
             return
 
     db.drop_all()
+    logger.info("Database was dropped")
 
     if remove:
         call(["rm", app.config["DB_PATH"]])
+        logger.info("Database file was removed")
+
+
 
 
 @manager.command
