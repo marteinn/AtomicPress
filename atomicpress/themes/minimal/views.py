@@ -26,8 +26,12 @@ def post_list(category=None, page=0, year=0, month=0, tag=None):
         filter(Post.type == PostType.POST)
 
     if category:
-        category_obj = Category.query.filter(Category.slug == category).\
-            slice(0, 1)[0]
+        category_obj = Category.query.filter(Category.slug == category)
+        category_obj = category_obj.slice(0, 1)
+        if category_obj.count() == 0:
+            raise Exception("Category %s does not exist" % (category,))
+
+        category_obj = category_obj[0]
         posts = posts.filter(Post.categories.contains(category_obj))
 
     if tag:
