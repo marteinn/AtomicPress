@@ -7,7 +7,7 @@ This extensions makes it possible to generate dummy data, as a simple way to
 try out the system and see how ut behaves.
 """
 
-from atomicpress.app import db, app
+from atomicpress.app import db, app, manager
 from atomicpress.models import (
     Blog, Author, Category, Tag, Post, PostStatus, PostType)
 from flask_script import Manager
@@ -97,3 +97,7 @@ def fill():
     db.session.commit()
 
     logger.info("Prefill complete!")
+
+
+def setup():
+    manager.add_command('prefill', PreFillCommand)

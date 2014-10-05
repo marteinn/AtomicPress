@@ -8,6 +8,14 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask_script import Manager
 
 
+DEFAULT_EXTENSIONS = (
+    "atomicpress.ext.importer",
+    "atomicpress.ext.exporter",
+    "atomicpress.ext.ftp",
+    "atomicpress.ext.s3",
+    "atomicpress.ext.prefill",
+)
+
 app = Flask(__name__)
 app.config.update(dict(
     SQLALCHEMY_DATABASE_URI="",
@@ -18,7 +26,8 @@ app.config.update(dict(
     STATIC_URL='/static/',
     UPLOADS_URL='/uploads/',
     GIST_BACKEND_RENDERING=True,
-    THEME="atomicpress.themes.minimal"
+    THEME="atomicpress.themes.minimal",
+    EXTENSIONS=DEFAULT_EXTENSIONS,
 ))
 
 settings_module = os.environ.get("ATOMICPRESS_SETTINGS")
@@ -49,18 +58,10 @@ def setup(init_run=False):
     from atomicpress import filters
     from atomicpress import commands
     from atomicpress import context_processors
-    from atomicpress.ext.importer import ImporterCommand
-    from atomicpress.ext.exporter import ExporterCommand
-    from atomicpress.ext.ftp import FtpSyncCommand
-    from atomicpress.ext.s3 import S3SyncCommand
-    from atomicpress.ext.prefill import PreFillCommand
 
     manager.add_command('db', MigrateCommand)
-    manager.add_command('importer', ImporterCommand)
-    manager.add_command('exporter', ExporterCommand)
-    manager.add_command('ftp', FtpSyncCommand)
-    manager.add_command('s3', S3SyncCommand)
-    manager.add_command('prefill', PreFillCommand)
+
+    activate_extensions()
 
     # Activate theme
     theme = importlib.import_module(app.config["THEME"])
@@ -70,9 +71,15 @@ def setup(init_run=False):
         run()
 
 
-def run():
-    manager.run()
+def activate_extensions():
+    for extension_module in app.config["EXTENSIONS"]:
+        extension = importlib.import_module(extension_module)
+        extension.setup()
 
 
 def activate_theme(theme):
     app.register_blueprint(theme, url_prefix="")
+
+
+def run():
+    manager.run()

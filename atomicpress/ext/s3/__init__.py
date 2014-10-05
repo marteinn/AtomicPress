@@ -11,7 +11,7 @@ from unipath import Path
 import boto
 from boto.s3.key import Key
 
-from atomicpress.app import app
+from atomicpress.app import app, manager
 
 from flask_script import Manager
 
@@ -45,3 +45,6 @@ def sync():
 
     logger.info("Sync complete!")
 
+
+def setup():
+    manager.add_command('s3', S3SyncCommand)

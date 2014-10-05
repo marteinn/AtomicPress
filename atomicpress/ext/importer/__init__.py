@@ -9,11 +9,10 @@ This module handles wordpress imports by exposing the import command.
 import re
 import os
 from datetime import datetime
-from flask import logging
 from flask_script import Manager
 from unipath import Path
 import wpparser
-from atomicpress.app import db, app
+from atomicpress.app import db, app, manager
 from atomicpress.models import Blog, Author, Category, Tag, Post
 from atomicpress.utils.files import generate_image_from_url
 
@@ -21,6 +20,7 @@ from atomicpress.utils.files import generate_image_from_url
 logger = app.logger
 
 ImporterCommand = Manager(usage='Perform wordpress import')
+
 
 @ImporterCommand.option('-f', '--file', dest='path', default=None,
                       help="Import wordpress file")
@@ -229,3 +229,5 @@ def _insert_categories(categories, parent=None, reference=None):
     return reference
 
 
+def setup():
+    manager.add_command('importe', ImporterCommand)

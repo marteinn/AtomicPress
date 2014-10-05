@@ -7,7 +7,7 @@ Deplys the generated static files to a ftp account.
 """
 
 from atomicpress.utils import ftpsync
-from atomicpress.app import app
+from atomicpress.app import app, manager
 from flask_script import Manager
 
 
@@ -25,3 +25,7 @@ def sync():
                         app.config["FTP_DESTINATION"])
 
     logger.info("Sync complete!")
+
+
+def setup():
+    manager.add_command('ftp', FtpSyncCommand)
