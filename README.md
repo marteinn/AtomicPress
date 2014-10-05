@@ -6,12 +6,12 @@ It is built in Flask and takes advantage of it's awesome eco-system such as Flas
 
 ## Features
 
-- Ports, Pages, Categories, Tags and Authors (like WordPress).
+- Posts, Pages, Categories, Tags and Authors (like WordPress).
 - Markdown rendering
 - Theme support
 - Import from Wordpress
 - Gist integration
-- Admin interface
+- A simple admin interface
 - Build you own extensions
 - Sync your generated blog with either FTP or to Amazon S3
 
@@ -69,22 +69,31 @@ To make your own, just look at the theme [minimal](https://github.com/marteinn/A
 
 ## Filters
 
+AtomicPress comes with a couple of filters you can use in the post content area.
+
 ### code
+
+Render a basic code snippet.
 
 	[code]var a = 1;[/code]
 	>>> <pre class="code">var a = 1;</pre>
 	
 ### gist
 
-Embeds a gist to content.
+Embeds a more advanced code snippet through a github gist to content.
 
 	[gist id="asdasd"]
 	
 ### image
 
-Embed image path.
+Embed image path with the `[image]` filter.
 
 	<img src="[image id="myimage.jpg"]" />
+	>>> <img src="/uploads/myimage.jpg" />
+	
+If you only want the uploads path, you can use the `[uploads]` filter.
+	
+	<img src="[uploads]myimage.jpg" />
 	>>> <img src="/uploads/myimage.jpg" />
 
 ## Commands
@@ -132,18 +141,23 @@ Creates a lightweight http server running the web application.
 	
 **Options**
 
-	-a admin
-	-t toolbar
-	-d debug
+	-a Activate the admin area (do not do this in a production anvironment)
+	-t Show debug toolbar.
+	-d Show debug messages.
 	
 	
-Note: It is possible to run AtomicPress as a standard wsgi application.
+Note: Although untested, it is possible to run AtomicPress as a standard wsgi application.
+
 
 ### Import
 
 AtomicPress uses wpparser to import data from wordpress export files. Just specify the path to your database export and you are ready to go.
 
     python manage.py importer import_blog -f=./data/blog.wordpress.2014-09-25.xml
+    
+**Options**
+
+	-f Path to wordpress export file.
 
 ### Export
 

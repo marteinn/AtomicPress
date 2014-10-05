@@ -8,6 +8,7 @@ import markdown
 
 IMAGE_MATCH = re.compile("\[(image|img).src=\"(.*?)\"\]",
                          re.MULTILINE | re.DOTALL)
+UPLOADS_MATCH = re.compile("\[uploads\]")
 GIST_MATCH = re.compile("\[gist.id=(\w*?)\]")
 CODE_MATCH = re.compile(r"\[code[^\]]*](.+?)\[/code\]",
                         re.MULTILINE | re.DOTALL)
@@ -68,6 +69,7 @@ def _handle_gist(s):
 @app.template_filter('image')
 def image_filter(s):
     s = re.sub(IMAGE_MATCH, _handle_image, s)
+    s = re.sub(UPLOADS_MATCH, app.config["UPLOADS_URL"]+"/", s)
     return s
 
 
