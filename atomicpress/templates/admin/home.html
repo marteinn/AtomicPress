@@ -1,0 +1,29 @@
+{% extends "admin/master.html" %}
+{% block body %}
+
+<h3>Blog</h3>
+<h4>Blog</h4>
+<p>Contains basic information of the blog, such as name and tagline.</p>
+
+<h4>Author</h4>
+<p>The authors blog entries will be associated with.</p>
+
+<hr />
+
+<h3>Post</h3>
+<h4>Post</h4>
+<p>Holds blog entries and pages.</p>
+
+<h4>Tag</h4>
+<p>Posts and pages can be associated with tags.</p>
+
+<h4>Category</h4>
+<p>A way to categorize posts, categories can have both parents and children.</p>
+
+<hr />
+
+<h3>Uploaded files</h3>
+<p>Basic file administration, based on FileAdmin from Flask-Admin.
+All files are stored in your defined "uploads" path.</p>
+
+{% endblock %}

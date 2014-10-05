@@ -1,0 +1,11 @@
+include requirements.txt README.md
+recursive-include atomicpress/migrations *
+recursive-include atomicpress/migrations/versions *
+recursive-include atomicpress/templates *
+include atomicpress/themes/minimal/static/*.js
+include atomicpress/themes/minimal/static/*.json
+include atomicpress/themes/minimal/static/*.jshintrc
+recursive-include atomicpress/themes/minimal/static/builds *
+recursive-include atomicpress/themes/minimal/static/gulp *
+recursive-include atomicpress/themes/minimal/static/less *
+recursive-include atomicpress/themes/minimal/templates *

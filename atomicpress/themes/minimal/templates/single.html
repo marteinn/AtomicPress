@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block content %}
+    {% with single=True %}
+        {% include "content.html" %}
+    {% endwith %}
+
+    {% if post.type == "post" %}
+    <aside class="user-card u-clearfix">
+        <div class="user-card-avatar l-left l-v-center">
+            <img src="{{ post.author.avatar }}https://avatars2.githubusercontent.com/u/286534?v=2&s=140" />
+        </div>
+        <div class="user-card-info l-left l-v-center text-smaller">
+            <h4>{{ post.author.nicename }}</h4>
+            <p>
+                {{ post.author.bio|safe }}
+            </p>
+        </div>
+    </aside>
+    {% endif %}
+{% endblock %}
+

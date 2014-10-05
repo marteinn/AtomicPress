@@ -1,0 +1,29 @@
+<header class="header u-clearfix">
+    <div class="header-title l-left">
+        <h2 class="text-small">
+            <a href="{{ url_for("minimal.post_list") }}">
+                {{ blog.title }}
+            </a>
+        </h2>
+        <p class="text-small"><em>{{ blog.tagline }}</em></p>
+    </div>
+
+    <nav class="header-nav l-right text-small">
+        <ul>
+            {% for page in menu_pages %}
+                <li>
+                    <a class="{{ is_url_showing("minimal.post_single", slug=page.name) }}"
+                        href="{{ url_for("minimal.post_single", slug=page.name) }}">
+                        {{ page.title }}
+                    </a>
+                </li>
+            {% endfor %}
+            <li>
+                <a class="{{ is_url_showing("minimal.menu") }}"
+                   href="{{ url_for("minimal.menu") }}">
+                    Menu
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

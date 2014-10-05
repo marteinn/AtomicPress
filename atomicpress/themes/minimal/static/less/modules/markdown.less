@@ -1,0 +1,70 @@
+.markdown {
+    .alignleft {
+        float: left;
+        margin-right: @margin_small;
+        margin-bottom: @margin_small;
+    }
+
+    h1 {
+        .text-largest();
+    }
+
+    h2 {
+        .text-larger();
+    }
+
+    h3 {
+        .text-large();
+    }
+
+    h4 {
+    }
+
+    ul, ol {
+        list-style-type: square;
+        padding-left: @margin_small*2;
+    }
+
+    ul {
+        list-style-type: square;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    p, pre {
+        margin-top: @margin_small;
+        margin-bottom: @margin_small;
+    }
+
+    pre {
+        font-size: 12px;
+        border: 1px solid rgb(153, 153, 153);
+        padding: 6px;
+        box-sizing: boder-box;
+        font-family: monospace;
+        overflow: scroll;
+        line-height: 1em;
+    }
+
+    pre.code {
+
+    }
+
+    p strong {
+        font-weight: bold;
+    }
+
+    p em {
+        font-style: italic;
+    }
+
+    p code {
+        font-family: monospace;
+    }
+
+    a:visited {
+        color: @color_link_visited;
+    }
+}
