@@ -8,9 +8,7 @@
 
 {% block content %}
     <article class="post page page-menu">
-        <h1 class="page-menu-title text-largest">
-            Menu
-        </h1>
+        <h1 class="page-menu-title text-largest">Menu</h1>
 
         {% if pages|length %}
         <nav class="page-menu-nav">
@@ -18,9 +16,7 @@
             <ul class="l-grid-2">
                 {% for page in pages %}
                 <li>
-                    <a href="{{ url_for("minimal.post_single", slug=page.name) }}">
-                        {{ page.title }}
-                    </a>
+                    <a href="{{ url_for("minimal.post_single", slug=page.name) }}">{{ page.title }}</a>
                 </li>
                 {% endfor %}
             </ul>
@@ -33,9 +29,7 @@
             <ul class="l-grid-2">
                 {% for category in categories %}
                 <li>
-                    <a href="{{ url_for("minimal.post_list", category=category.slug) }}">
-                        {{ category.name }}
-                    </a>
+                    <a href="{{ url_for("minimal.post_list", category=category.slug) }}">{{ category.name }}</a>
                 </li>
                 {% endfor %}
             </ul>
@@ -48,9 +42,7 @@
             <ul class="l-grid-2">
                 {% for tag in tags %}
                 <li>
-                    <a href="{{ url_for("minimal.post_list", tag=tag.slug) }}">
-                        {{ tag.name }}
-                    </a>
+                    <a href="{{ url_for("minimal.post_list", tag=tag.slug) }}">{{ tag.name }}</a>
                 </li>
                 {% endfor %}
             </ul>
@@ -63,9 +55,7 @@
             <ul class="l-grid-2">
                 {% for month in archive %}
                 <li>
-                    <a href="{{ url_for("minimal.post_list", year=month.year, month=month.month) }}">
-                        {{ month.name }}
-                    </a>
+                    <a href="{{ url_for("minimal.post_list", year=month.year, month=month.month) }}">{{ month.name }}</a>
                 </li>
                 {% endfor %}
             </ul>
