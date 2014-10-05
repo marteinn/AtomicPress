@@ -47,7 +47,7 @@ def fill():
 
     category = Category(
         name="Economy",
-        slug="news",
+        slug="economy",
         hidden=False,
         parent=main_category
     )
