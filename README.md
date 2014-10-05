@@ -52,7 +52,7 @@ If you want a quickstart, just copy the example `base-example`, cd and type `mak
 - FTP_HOST: Hostname to your ftp account.
 - FTP_USERNAME: Ftp username.
 - FTP_PASSWORD: Ftp password.
-- FTP_DESTINATION: Deploy subpath destination.
+- FTP_DESTINATION: Ftp sup
 
 ## Admin
 
