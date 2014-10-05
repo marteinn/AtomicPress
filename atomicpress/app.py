@@ -29,6 +29,12 @@ if not settings_module:
 
 app.config.from_object(settings_module)
 
+if "UPLOADS_PATH" not in app.config or \
+        not os.path.isdir(app.config["UPLOADS_PATH"]):
+
+    app.logger.error("UPLOADS_PATH is empty or is not a folder")
+    exit()
+
 db = SQLAlchemy()
 db.init_app(app)
 
