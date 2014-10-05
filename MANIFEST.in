@@ -1,4 +1,4 @@
-include requirements.txt
+include requirements.txt README.md
 recursive-include atomicpress/migrations *
 recursive-include atomicpress/migrations/versions *
 recursive-include atomicpress/templates *
