@@ -17,7 +17,7 @@ EXCLUDE_FROM_PACKAGES = []
 
 packages = find_packages()
 
-with open('README.rst') as f:
+with open('README.md') as f:
     readme = f.read()
 
 requires = parse_requirements("requirements.txt")
