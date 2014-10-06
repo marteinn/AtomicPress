@@ -23,6 +23,13 @@ It is built in Flask and takes advantage of it's awesome eco-system such as Flas
 3. It's built to make Wordpress import simple.
 
 
+## Installation
+
+AtomicPress can easily be installed through pip.
+
+	pip install atomicpress
+
+
 ## Getting started
 
 To install AtomicPress you'll need python 2.7, virtualenv and pip.
