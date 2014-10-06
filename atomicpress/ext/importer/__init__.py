@@ -230,4 +230,4 @@ def _insert_categories(categories, parent=None, reference=None):
 
 
 def setup():
-    manager.add_command('importe', ImporterCommand)
+    manager.add_command('importer', ImporterCommand)
