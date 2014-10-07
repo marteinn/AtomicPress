@@ -1,5 +1,5 @@
 init:
-	pip install -r requirements.txt
+    pip install -r requirements.txt
 
 migrate:
     python manage.py db migrate -d=atomicpress/migrations/
