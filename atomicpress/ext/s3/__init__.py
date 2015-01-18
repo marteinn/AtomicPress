@@ -23,8 +23,16 @@ logger = app.logger
 
 @S3SyncCommand.command
 def sync():
-    c = boto.connect_s3(aws_access_key_id=app.config["AWS_ACCESS_KEY_ID"],
-                        aws_secret_access_key=app.config["AWS_ACCESS_KEY"])
+    params = {
+            "aws_access_key_id": app.config["AWS_ACCESS_KEY_ID"],
+            "aws_secret_access_key": app.config["AWS_ACCESS_KEY"]
+            };
+
+    if app.config.get("AWS_REGION"):
+        c = boto.s3.connect_to_region(app.config["AWS_REGION"], **params);
+    else:
+        c = boto.connect_s3(**params);
+
     b = c.get_bucket(app.config["S3_BUCKET"])
     k = Key(b)
 
