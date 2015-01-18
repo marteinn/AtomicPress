@@ -51,6 +51,7 @@ If you want a quickstart, just copy the example `base-example`, cd and type `mak
 ### S3
 - AWS_ACCESS_KEY_ID: Access key id to aws.
 - AWS_ACCESS_KEY: Access key to aws.
+- AWS_REGION: The region your bucket is places (optional).
 - S3_BUCKET: The bucket you want to deploy to.
 - S3_DESTINATION: The path within the bucket you want to deploy to.
 
