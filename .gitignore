@@ -1,7 +1,5 @@
 *.pyc
-/lib
-/include
-/bin
+/venv*
 .DS_Store
 .*.swp
 tags

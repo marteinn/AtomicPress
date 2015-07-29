@@ -1,0 +1,2 @@
+-r install.txt
+pypandoc==0.9.9

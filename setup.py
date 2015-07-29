@@ -15,29 +15,24 @@ if sys.argv[-1] == "publish":
 
 packages = find_packages()
 
-with open('README.md') as f:
-    readme = f.read()
-
-requires = parse_requirements("requirements.txt")
+# Handle requirements
+requires = parse_requirements("requirements/install.txt")
 install_requires = [str(ir.req) for ir in requires]
 
+requires = parse_requirements("requirements/tests.txt")
+tests_require = [str(ir.req) for ir in requires]
 
-long_description = """
-AtomicPress is a static blog generator for python developers that don't want
-the WordPress security hassle.
-
----
-
-%s
-
-""" % readme
-
+# Convert markdown to rst
+try:
+    from pypandoc import convert
+    long_description = convert("README.md", "rst")
+except ImportError:
+    long_description = open("README.md").read()
 
 setup(
     name="atomicpress",
     version=atomicpress.__version__,
-    description=("AtomicPress is a static blog generator for python developers "
-                 "that don't want the WordPress security hassle."),
+    description=("AtomicPress is a static blog generator for python developers."),  # NOQA
     long_description=long_description,
     author="Martin Sandström",
     author_email="martin@marteinn.se",
@@ -45,6 +40,7 @@ setup(
     packages=packages,
     include_package_data=True,
     install_requires=install_requires,
+    tests_require=tests_require,
     license="MIT",
     zip_safe=False,
     classifiers=(
