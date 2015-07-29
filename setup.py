@@ -32,8 +32,7 @@ except ImportError:
 setup(
     name="atomicpress",
     version=atomicpress.__version__,
-    description=("AtomicPress is a static blog generator for python developers "  # NOQA
-                 "that don't want the WordPress security hassle."),
+    description=("AtomicPress is a static blog generator for python developers."),  # NOQA
     long_description=long_description,
     author="Martin Sandström",
     author_email="martin@marteinn.se",

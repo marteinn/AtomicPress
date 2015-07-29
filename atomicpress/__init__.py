@@ -4,12 +4,12 @@
 """
 atomicpress
 ----------
-AtomicPress is a static blog generator for python developers that don't want the Wordpress security hassle.
+AtomicPress is a static blog generator for python developers.
 """
 
 __title__ = 'atomicpress'
-__version__ = '1.0.7'
-__build__ = 107
+__version__ = '1.0.8'
+__build__ = 108
 __author__ = 'Martin Sandström'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2014-2015 Martin Sandström'
