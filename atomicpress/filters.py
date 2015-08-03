@@ -18,7 +18,8 @@ _gist_cache = {}
 
 @app.template_filter('markdown_content')
 def markdown_filter(s):
-    s = markdown.markdown(s)
+    extensions = app.config["MARKDOWN_EXTENSIONS"]
+    s = markdown.markdown(s, extensions=extensions)
     return s
 
 
