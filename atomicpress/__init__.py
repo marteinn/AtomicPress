@@ -8,8 +8,8 @@ AtomicPress is a static blog generator for python developers.
 """
 
 __title__ = 'atomicpress'
-__version__ = '1.0.10'
-__build__ = 1010
+__version__ = '1.0.11'
+__build__ = 1011
 __author__ = 'Martin Sandström'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2014-2015 Martin Sandström'
