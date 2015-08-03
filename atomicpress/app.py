@@ -16,6 +16,13 @@ DEFAULT_EXTENSIONS = (
     "atomicpress.ext.prefill",
 )
 
+DEFAULT_MARKDOWN_EXTENSIONS = [
+    "markdown.extensions.tables",
+    "markdown.extensions.nl2br",
+    "markdown.extensions.fenced_code",
+    "markdown.extensions.headerid"
+]
+
 app = Flask(__name__)
 app.config.update(dict(
     SQLALCHEMY_DATABASE_URI="",
@@ -26,13 +33,14 @@ app.config.update(dict(
     GIST_BACKEND_RENDERING=True,
     THEME="atomicpress.themes.minimal",
     EXTENSIONS=DEFAULT_EXTENSIONS,
+    MARKDOWN_EXTENSIONS=DEFAULT_MARKDOWN_EXTENSIONS
 ))
 
 settings_module = os.environ.get("ATOMICPRESS_SETTINGS")
 
 if not settings_module:
     app.logger.warning("ATOMICPRESS_SETTINGS is empty, please specify a "
-        "settings file")
+                       "settings file")
 
 app.config.from_object(settings_module)
 
@@ -51,11 +59,11 @@ manager = Manager(app)
 
 
 def setup(init_run=False):
-    from atomicpress import models
-    from atomicpress import views
-    from atomicpress import filters
-    from atomicpress import commands
-    from atomicpress import context_processors
+    from atomicpress import models  # NOQA
+    from atomicpress import views  # NOQA
+    from atomicpress import filters  # NOQA
+    from atomicpress import commands  # NOQA
+    from atomicpress import context_processors  # NOQA
 
     manager.add_command('db', MigrateCommand)
 
