@@ -47,6 +47,7 @@ If you want a quickstart, just copy the example `base-example`, cd and type `mak
 - THEME: The theme you want to run, default is `atomicpress.themes.minimal`.
 - GIST_BACKEND_RENDERING: If you want to render a `<noscript></noscript>` that contains the gist content as pure text. Default is `False`
 - EXTENSIONS: A array with the extensions you want to run.
+- MARKDOWN_EXTENSIONS: A list with the active [markdown extensions](https://pythonhosted.org/Markdown/extensions/index.html).
 
 ### S3
 - AWS_ACCESS_KEY_ID: Access key id to aws.
@@ -183,7 +184,7 @@ Send the exported static files to a AWS S3 bucket.
     
 #### FTP
 
-Send the files a your ftp account.
+Send the files to your ftp account.
 
 	python manage.py ftp sync
 	
