@@ -1,4 +1,9 @@
 <article class="post post-id-{{ post.name }} {% if post.categories|length %}post-category-{{ post.categories[0].slug }}{% endif %} {% if single %}post-single{% endif %}">
+    {% if is_debug() and post.status == "draft" %}
+        <p class="alert-bar">
+           This post has not yet been published.
+        </p>
+    {% endif %}
     <h1 class="post-title text-largest">
         {% if single %}
             {{ post.title|title|safe }}
