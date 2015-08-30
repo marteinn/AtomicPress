@@ -24,7 +24,7 @@ def post_list(category=None, page=0, year=0, month=0, tag=None):
     blog = Blog.query.all()[0]
 
     posts = Post.query.order_by(desc(Post.date)).\
-        filter(helpers.get_post_status()).\
+        filter(helpers.gen_post_status()).\
         filter(Post.type == PostType.POST)
 
     if category:
@@ -67,7 +67,7 @@ def post_single(slug=None):
     blog = Blog.query.all()[0]
 
     posts = Post.query.order_by(desc(Post.date)).\
-        filter(helpers.get_post_status()).\
+        filter(helpers.gen_post_status()).\
         filter((Post.type == PostType.POST) | (Post.type == PostType.PAGE)).\
         filter(Post.name == slug).\
         slice(0, 1)
@@ -89,7 +89,7 @@ def menu():
     blog = Blog.query.all()[0]
 
     posts = Post.query.order_by(asc(Post.date)).\
-        filter(helpers.get_post_status()).\
+        filter(helpers.gen_post_status()).\
         filter(Post.type == PostType.POST).\
         slice(0, 1)
 
@@ -102,7 +102,7 @@ def menu():
         year, real_month = month
 
         num_posts = Post.query.order_by(asc(Post.date)).\
-            filter(helpers.get_post_status()).\
+            filter(helpers.gen_post_status()).\
             filter(Post.type == PostType.POST).\
             filter(func.strftime('%Y-%m', Post.date) ==
                    "%s-%02d" % (year, real_month)).\
@@ -122,7 +122,7 @@ def menu():
     archive_data = archive_data[::-1]
 
     pages = Post.query.order_by(desc(Post.date)).\
-        filter(helpers.get_post_status()).\
+        filter(helpers.gen_post_status()).\
         filter(Post.type == PostType.PAGE).\
         all()
 
