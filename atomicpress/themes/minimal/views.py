@@ -70,6 +70,9 @@ def post_single(slug=None):
         filter(Post.name == slug).\
         slice(0, 1)
 
+    if not posts.count():
+        return render_template("404.html")
+
     post = posts.all()[0]
 
     return render_template("single.html",
@@ -77,7 +80,6 @@ def post_single(slug=None):
                            post=post,
                            menu_pages=_get_menu_pages()
                            )
-
 
 
 @theme.route("/archive/")
