@@ -7,7 +7,8 @@ import datetime
 from flask import render_template
 from sqlalchemy import desc, asc, func
 from atomicpress.themes.minimal import theme, PAGE_SIZE
-from atomicpress.models import Blog, Post, PostStatus, PostType, Category, Tag
+from atomicpress.themes.minimal import helpers
+from atomicpress.models import Blog, Post, PostType, Category, Tag
 from atomicpress.utils import date as dateutils
 
 
@@ -21,8 +22,9 @@ from atomicpress.utils import date as dateutils
 @theme.route("/")
 def post_list(category=None, page=0, year=0, month=0, tag=None):
     blog = Blog.query.all()[0]
+
     posts = Post.query.order_by(desc(Post.date)).\
-        filter(Post.status == PostStatus.PUBLISH).\
+        filter(helpers.get_post_status()).\
         filter(Post.type == PostType.POST)
 
     if category:
@@ -65,7 +67,7 @@ def post_single(slug=None):
     blog = Blog.query.all()[0]
 
     posts = Post.query.order_by(desc(Post.date)).\
-        filter(Post.status == PostStatus.PUBLISH).\
+        filter(helpers.get_post_status()).\
         filter((Post.type == PostType.POST) | (Post.type == PostType.PAGE)).\
         filter(Post.name == slug).\
         slice(0, 1)
@@ -87,7 +89,7 @@ def menu():
     blog = Blog.query.all()[0]
 
     posts = Post.query.order_by(asc(Post.date)).\
-        filter(Post.status == PostStatus.PUBLISH).\
+        filter(helpers.get_post_status()).\
         filter(Post.type == PostType.POST).\
         slice(0, 1)
 
@@ -100,7 +102,7 @@ def menu():
         year, real_month = month
 
         num_posts = Post.query.order_by(asc(Post.date)).\
-            filter(Post.status == PostStatus.PUBLISH).\
+            filter(helpers.get_post_status()).\
             filter(Post.type == PostType.POST).\
             filter(func.strftime('%Y-%m', Post.date) ==
                    "%s-%02d" % (year, real_month)).\
@@ -120,7 +122,7 @@ def menu():
     archive_data = archive_data[::-1]
 
     pages = Post.query.order_by(desc(Post.date)).\
-        filter(Post.status == PostStatus.PUBLISH).\
+        filter(helpers.get_post_status()).\
         filter(Post.type == PostType.PAGE).\
         all()
 

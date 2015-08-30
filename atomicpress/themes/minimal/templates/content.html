@@ -4,13 +4,15 @@
            This post has not yet been published.
         </p>
     {% endif %}
-    <h1 class="post-title text-largest">
-        {% if single %}
-            {{ post.title|title|safe }}
-        {% else %}
-            <a href="{{ url_for("minimal.post_single", slug=post.name) }}">{{ post.title|title|safe }}</a>
-        {% endif %}
-    </h1>
+    {% if post.name %}
+        <h1 class="post-title text-largest">
+            {% if single %}
+                {{ post.title|title|safe }}
+            {% else %}
+                <a href="{{ url_for("minimal.post_single", slug=post.name) }}">{{ post.title|title|safe }}</a>
+            {% endif %}
+        </h1>
+    {% endif %}
 
     {% if post.categories|length %}
         <div class="breadcrumb text-smaller">
@@ -27,13 +29,15 @@
         </div>
     {% endif %}
 
-    <div class="post-content text-medium markdown">
-        {% if post.markdown %}
-            {{ post.content|markdown_content|gist|code|safe|image }}
-        {% else %}
-            {{ post.content|gist|code|safe|image }}
-        {% endif %}
-    </div>
+    {% if post.content %}
+        <div class="post-content text-medium markdown">
+            {% if post.markdown %}
+                {{ post.content|markdown_content|gist|code|safe|image }}
+            {% else %}
+                {{ post.content|gist|code|safe|image }}
+            {% endif %}
+        </div>
+    {% endif %}
 
     {% if post.type == "post" %}
     <div class="post-meta text-smaller">
