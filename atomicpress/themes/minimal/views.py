@@ -124,8 +124,8 @@ def menu():
         filter(Post.type == PostType.PAGE).\
         all()
 
-    categories = Category.query.filter(Category.hidden == False).all()
-    tags = Tag.query.filter(Tag.hidden == False).all()
+    categories = Category.query.filter(Category.hidden == False).all()  # NOQA
+    tags = Tag.query.filter(Tag.hidden == False).all()  # NOQA
 
     return render_template("menu.html",
                            blog=blog,
