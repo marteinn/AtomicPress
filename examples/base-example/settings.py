@@ -8,7 +8,7 @@ SQLALCHEMY_DATABASE_URI = "sqlite:////%s" % DB_PATH
 THEME = "atomicpress.themes.minimal"
 
 DEBUG = True
-SECRET_KEY = "A secret key"
+SECRET_KEY = ""
 FREEZER_BASE_URL = "/"
 FREEZER_DESTINATION = PROJECT_ROOT+"/blog"
 
