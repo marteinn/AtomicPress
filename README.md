@@ -65,7 +65,7 @@ If you want a quickstart, just copy the example `base-example`, cd and type `mak
 
 ## Admin
 
-AtomicPress uses Flask-Admin to show a admin interface, you can access it by running `runserver` with the argument `-a`. Per default is located at `http://localhost:5000/admin/`.
+AtomicPress uses Flask-Admin to show a admin interface, you can access it by running `runserver` with the argument `-a` (admin). Per default is located at `http://localhost:5000/admin/`.
 
 
 ## Themes
@@ -123,8 +123,8 @@ Removes the sqlite database file.
 	
 **Options**
 
-	-r Remove the sqlite file when done.
-	-f Do now show the agreement promp.
+	-r (remove) Remove the sqlite file when done.
+	-f (force) Do now show the agreement promp.
 	
 #### Updating from a older version
 
@@ -150,9 +150,9 @@ Creates a lightweight http server running the web application.
 	
 **Options**
 
-	-a Activate the admin area (do not do this in a production anvironment)
-	-t Show debug toolbar.
-	-d Show debug messages.
+	-a (admin) Activate the admin area (do not do this in a production anvironment)
+	-t (toolbar) Show debug toolbar.
+	-d (debug) Show debug messages.
 	
 	
 Note: Although untested, it is possible to run AtomicPress as a standard wsgi application.
@@ -160,13 +160,13 @@ Note: Although untested, it is possible to run AtomicPress as a standard wsgi ap
 
 ### Import
 
-AtomicPress uses wpparser to import data from wordpress export files. Just specify the path to your database export and you are ready to go.
+AtomicPress uses [wpparser](https://github.com/marteinn/wpparser/) to import data from wordpress export files. Just specify the path to your database export and you are ready to go.
 
     python manage.py importer import_blog -f=./data/blog.wordpress.2014-09-25.xml
     
 **Options**
 
-	-f Path to wordpress export file.
+	-f (file) Path to wordpress export file.
 
 ### Export
 
