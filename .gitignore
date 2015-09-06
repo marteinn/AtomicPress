@@ -1,19 +1,22 @@
 *.pyc
 /venv*
-.DS_Store
-.*.swp
-tags
-.idea/
 dist
 build
 .coverage
 *.egg-info/
 /data
-/wordflask/uploads
 node_modules
 
-*.db
 /uploads
 /config.py
 /blog
+
+# Settings
 .env
+
+# Sqlite
+*.db
+
+# OSX
+.DS_Store
+
