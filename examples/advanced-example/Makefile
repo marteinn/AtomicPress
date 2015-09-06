@@ -1,11 +1,19 @@
-runserver_dev:
-	export ATOMICPRESS_SETTINGS=settings.prod && python manage.py runserver -a -d
+ATOMICPRESS_SETTINGS:=settings.prod
 
-runserver_prod:
-	export ATOMICPRESS_SETTINGS=settings.prod && python manage.py runserver
+init:
+	pip install -r requirements.txt
+	mkdir uploads
+	python manage.py create_db
+	python manage.py prefill fill
+
+run_dev:
+	python manage.py runserver -a -d
+
+run:
+	python manage.py runserver
 
 sync:
-	export ATOMICPRESS_SETTINGS=settings.prod && python manage.py s3 sync
+	python manage.py s3 sync
 
 export:
-	export ATOMICPRESS_SETTINGS=settings.prod && python manage.py exporter export
+	python manage.py exporter export
