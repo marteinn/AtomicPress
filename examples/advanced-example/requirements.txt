@@ -1,3 +1,0 @@
-atomicpress
-unipath
-python-dotenv
