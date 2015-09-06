@@ -71,5 +71,8 @@ target/
 # Export files
 /blog
 
+# AWS
+.boto
+
 # Dev
 atomicpress
