@@ -14,6 +14,12 @@ class HomeView(AdminIndexView):
         return self.render('admin/home.html')
 
 
+class PostView(ModelView):
+    column_default_sort = ('date', True)
+    column_searchable_list = ('name', 'title', 'content')
+    list_columns = ('title', 'status', 'modified', 'date', 'type')
+
+
 def create_admin():
     app = current_app._get_current_object()
     admin = Admin(app, "AtomicPress", index_view=HomeView(name='Home'))
@@ -21,7 +27,7 @@ def create_admin():
     admin.add_view(ModelView(models.Blog, db.session, category="Blog"))
     admin.add_view(ModelView(models.Author, db.session, category="Blog"))
 
-    admin.add_view(ModelView(models.Post, db.session, category="Post"))
+    admin.add_view(PostView(models.Post, db.session, category="Post"))
     admin.add_view(ModelView(models.Tag, db.session, category="Post"))
     admin.add_view(ModelView(models.Category, db.session, category="Post"))
 

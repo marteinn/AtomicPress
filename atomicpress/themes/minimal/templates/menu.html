@@ -15,9 +15,11 @@
             <h2 class="h2 text-large">Pages</h2>
             <ul class="l-grid-2">
                 {% for page in pages %}
-                <li>
-                    <a href="{{ url_for("minimal.post_single", slug=page.name) }}">{{ page.title }}</a>
-                </li>
+                    {% if page.name %}
+                        <li>
+                            <a href="{{ url_for("minimal.post_single", slug=page.name) }}">{{ page.title }}</a>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </nav>

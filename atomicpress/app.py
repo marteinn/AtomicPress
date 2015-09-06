@@ -59,6 +59,7 @@ manager = Manager(app)
 
 
 def setup(init_run=False):
+    print("setup!")
     from atomicpress import models  # NOQA
     from atomicpress import views  # NOQA
     from atomicpress import filters  # NOQA

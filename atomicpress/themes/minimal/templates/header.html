@@ -10,6 +10,9 @@
 
     <nav class="header-nav l-right text-small">
         <ul>
+            {% if is_debug() %}
+                <li><a href="/admin/">Admin</a></li>
+            {% endif %}
             {% for page in menu_pages %}
                 <li>
                     <a class="{{ is_url_showing("minimal.post_single", slug=page.name) }}"

@@ -15,3 +15,9 @@ def is_url_showing(route=None, **kwargs):
 
 app.jinja_env.globals.update(is_url_showing=is_url_showing)
 
+
+def is_debug():
+    return app.config["DEBUG"]
+
+
+app.jinja_env.globals.update(is_debug=is_debug)
