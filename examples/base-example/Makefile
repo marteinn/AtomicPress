@@ -1,7 +1,7 @@
 export ATOMICPRESS_SETTINGS=settings.prod
 
 init:
-	pip install -r requirements.txt
+	pip install -r requirements/install.txt
 	mkdir uploads
 	python manage.py create_db
 	python manage.py prefill fill
