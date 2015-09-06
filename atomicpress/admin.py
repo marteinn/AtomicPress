@@ -17,7 +17,7 @@ class HomeView(AdminIndexView):
 class PostView(ModelView):
     column_default_sort = ('date', True)
     column_searchable_list = ('name', 'title', 'content')
-    list_columns = ('name', 'status', 'modified', 'date', 'type')
+    list_columns = ('title', 'status', 'modified', 'date', 'type')
 
 
 def create_admin():
