@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+"""
+atomicpress.utils.files
+----------
+Handle common io actions
+"""
+
 import posixpath
 from tempfile import NamedTemporaryFile
 import requests
