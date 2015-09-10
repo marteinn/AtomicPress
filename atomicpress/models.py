@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from app import db
+from .app import db
 from sqlalchemy.orm import relationship
 
 

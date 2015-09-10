@@ -17,7 +17,7 @@ def generate_image_from_url(url=None, timeout=30):
     try:
         response = requests.get(url, timeout=timeout)
         response.raise_for_status()
-    except Exception, e:
+    except Exception as e:
         return None, None
 
     img_tmp.write(response.content)
