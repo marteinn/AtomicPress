@@ -23,7 +23,7 @@ ImporterCommand = Manager(usage='Perform wordpress import')
 
 
 @ImporterCommand.option('-f', '--file', dest='path', default=None,
-                      help="Import wordpress file")
+                        help="Import wordpress file")
 def import_blog(path=None):
     logger.info("Parsing file...")
     parsed_data = wpparser.parse(path)
@@ -47,7 +47,7 @@ def insert(data):
     db.session.add(blog)
 
     # Authors
-    print "Adding authors..."
+    logger.info("Adding authors...")
 
     author_reference = {}
     for user_data in data["authors"]:

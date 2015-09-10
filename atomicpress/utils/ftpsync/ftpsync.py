@@ -112,5 +112,5 @@ class FtpSync():
                 self.conn.storbinary("STOR " + local_path.name,
                                      open(local_path, "rb"), 1024)
 
-        except Exception, e:
+        except Exception as e:
             logger.warn("%s - %s" % (e, str(e)))
