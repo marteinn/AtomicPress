@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import re
-from app import app
+
 import requests
 import markdown
+
+from app import app
 
 
 IMAGE_MATCH = re.compile("\[(image|img).src=\"(.*?)\"\]",

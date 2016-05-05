@@ -1,4 +1,5 @@
 from sqlalchemy import or_, and_
+
 from atomicpress.app import app
 from atomicpress.models import Post, PostStatus
 

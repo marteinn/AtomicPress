@@ -4,6 +4,7 @@ from flask import current_app
 from flask_admin.contrib.fileadmin import FileAdmin
 from flask_admin import AdminIndexView, expose, Admin
 from flask_admin.contrib.sqla import ModelView
+
 from atomicpress import models
 from atomicpress.app import db
 

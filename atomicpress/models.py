@@ -1,16 +1,19 @@
 # -*- coding: utf-8 -*-
 
 import datetime
+
 from .app import db
 from sqlalchemy.orm import relationship
 
 
-tag_association_table = db.Table('tag_association', db.Model.metadata,
+tag_association_table = db.Table(
+    'tag_association', db.Model.metadata,
     db.Column('left_id', db.Integer, db.ForeignKey('post.id')),
     db.Column('right_id', db.Integer, db.ForeignKey('tag.id'))
 )
 
-category_association_table = db.Table('category_association', db.Model.metadata,
+category_association_table = db.Table(
+    'category_association', db.Model.metadata,
     db.Column('left_id', db.Integer, db.ForeignKey('post.id')),
     db.Column('right_id', db.Integer, db.ForeignKey('category.id'))
 )
