@@ -30,6 +30,11 @@ AtomicPress can easily be installed through pip.
     pip install atomicpress
 
 
+### Develop
+
+    pip install git+git://github.com/marteinn/AtomicPress.git@develop
+
+
 ## Getting started
 
 To install AtomicPress you'll need python 2.7, virtualenv and pip.
