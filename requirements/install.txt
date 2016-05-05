@@ -6,6 +6,6 @@ Flask-SQLAlchemy==2.1
 Frozen-Flask==0.12
 Markdown==2.6.2
 Unipath==1.1
-boto==2.38.0
+boto==2.40.0
 requests==2.10.0
 wpparser==1.1.1
