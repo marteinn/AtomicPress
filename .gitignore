@@ -26,5 +26,4 @@ node_modules
 /data
 
 # Codeclimate
-.codeclimate.yml
 codeclimate-report.log
