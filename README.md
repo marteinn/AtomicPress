@@ -27,7 +27,7 @@ It is built in Flask and takes advantage of it's awesome eco-system such as Flas
 
 AtomicPress can easily be installed through pip.
 
-	pip install atomicpress
+    pip install atomicpress
 
 
 ## Getting started
@@ -72,8 +72,8 @@ AtomicPress uses Flask-Admin to show a admin interface, you can access it by run
 
 AtomicPress ships with the theme minimal per default, if you would like to make your own, just specify the path in your settings file.
 
-	THEME=mytheme
-	
+    THEME=mytheme
+
 To make your own, just look at the theme [minimal](https://github.com/marteinn/AtomicPress/tree/develop/atomicpress/themes/minimal) that ships with AtomicPress.
 
 ## Filters
@@ -84,26 +84,26 @@ AtomicPress comes with a couple of filters you can use in the post content area.
 
 Render a basic code snippet.
 
-	[code]var a = 1;[/code]
-	>>> <pre class="code">var a = 1;</pre>
-	
+    [code]var a = 1;[/code]
+    >>> <pre class="code">var a = 1;</pre>
+
 ### gist
 
 Embeds a more advanced code snippet through a github gist to content.
 
-	[gist id="asdasd"]
-	
+    [gist id="asdasd"]
+
 ### image
 
 Embed image path with the `[image]` filter.
 
-	<img src="[image id="myimage.jpg"]" />
-	>>> <img src="/uploads/myimage.jpg" />
-	
+    <img src="[image id="myimage.jpg"]" />
+    >>> <img src="/uploads/myimage.jpg" />
+
 If you only want the uploads path, you can use the `[uploads]` filter.
-	
-	<img src="[uploads]myimage.jpg" />
-	>>> <img src="/uploads/myimage.jpg" />
+
+    <img src="[uploads]myimage.jpg" />
+    >>> <img src="/uploads/myimage.jpg" />
 
 ## Commands
 
@@ -113,31 +113,30 @@ If you only want the uploads path, you can use the `[uploads]` filter.
 
 Creates the database and stores it according to the SQLALCHEMY_DATABASE_UR path.
 
-	python mange.py create_db
-	
+    python mange.py create_db
+
 #### Remove database
 
 Removes the sqlite database file.
 
-	python mange.py drop_db
-	
+    python mange.py drop_db
+
 **Options**
 
-	-r (remove) Remove the sqlite file when done.
-	-f (force) Do now show the agreement promp.
-	
+    -r (remove) Remove the sqlite file when done.
+    -f (force) Do now show the agreement promp.
+
 #### Updating from a older version
 
 Upgrading from a older version? Run this to make sure the schema is up to date.
 
     python manage.py upgrade -d=atomicpress/migrations/
-    
+
 ### Prefill db with initial data
 
 Adds initial data to the database, perfect when you want to try out AtomicPress.
 
-	python manage.py prefill fill
-	
+    python manage.py prefill fill
 
 
 ### Server
@@ -146,15 +145,14 @@ Adds initial data to the database, perfect when you want to try out AtomicPress.
 
 Creates a lightweight http server running the web application.
 
-	python manage.py runserver 
-	
+    python manage.py runserver
+
 **Options**
 
-	-a (admin) Activate the admin area (do not do this in a production anvironment)
-	-t (toolbar) Show debug toolbar.
-	-d (debug) Show debug messages.
-	
-	
+    -a (admin) Activate the admin area (do not do this in a production anvironment)
+    -t (toolbar) Show debug toolbar.
+    -d (debug) Show debug messages.
+
 Note: Although untested, it is possible to run AtomicPress as a standard wsgi application.
 
 
@@ -163,10 +161,10 @@ Note: Although untested, it is possible to run AtomicPress as a standard wsgi ap
 AtomicPress uses [wpparser](https://github.com/marteinn/wpparser/) to import data from wordpress export files. Just specify the path to your database export and you are ready to go.
 
     python manage.py importer import_blog -f=./data/blog.wordpress.2014-09-25.xml
-    
+
 **Options**
 
-	-f (file) Path to wordpress export file.
+    -f (file) Path to wordpress export file.
 
 ### Export
 
@@ -175,20 +173,18 @@ Create a static package of you blog, that are ready to be deployed.
     python manage.py exporter export
 
 ### Sync
-    
+
 #### S3
 
 Send the exported static files to a AWS S3 bucket.
 
-	python manage.py s3 sync
-    
+    python manage.py s3 sync
+
 #### FTP
 
 Send the files to your ftp account.
 
-	python manage.py ftp sync
-	
-
+    python manage.py ftp sync
 
 
 ## Extensions
@@ -198,29 +194,28 @@ Send the files to your ftp account.
 AtomicPress uses a pluggale extension system, similar to django's INSTALLED_APPS.
 To disable a plugin, define a property in your settings file and just define the ones you need.
 
-	EXTENSIONS = (
-	    # "atomicpress.ext.importer",
-	    "atomicpress.ext.exporter",
-	    "atomicpress.ext.ftp",
-	    "atomicpress.ext.s3",
-	    "atomicpress.ext.prefill",
-	)
-	
+    EXTENSIONS = (
+        # "atomicpress.ext.importer",
+        "atomicpress.ext.exporter",
+        "atomicpress.ext.ftp",
+        "atomicpress.ext.s3",
+        "atomicpress.ext.prefill",
+    )
+
 Activating you own is also simple, like this extension called catpictures:
 
-	EXTENSIONS = (
-	    "atomicpress.ext.importer",
-	    "atomicpress.ext.exporter",
-	    "atomicpress.ext.ftp",
-	    "atomicpress.ext.s3",
-	    "atomicpress.ext.prefill",
-	    "catpictures",
-	)
-	
+    EXTENSIONS = (
+        "atomicpress.ext.importer",
+        "atomicpress.ext.exporter",
+        "atomicpress.ext.ftp",
+        "atomicpress.ext.s3",
+        "atomicpress.ext.prefill",
+        "catpictures",
+    )
+
 ### Create extension
 
 To create a extension, create a module with a function called setup. Thats all you need.
-
 
 
 ## Contributing

@@ -1,15 +1,17 @@
+# OSX
+.DS_Store
+
+# Python
+__pycache__
 *.pyc
 /venv*
 dist
 build
 .coverage
 *.egg-info/
-/data
-node_modules
 
-/uploads
-/config.py
-/blog
+# Npm
+node_modules
 
 # Settings
 .env
@@ -17,6 +19,11 @@ node_modules
 # Sqlite
 *.db
 
-# OSX
-.DS_Store
+# Sample data
+/uploads
+/config.py
+/blog
+/data
 
+# Codeclimate
+codeclimate-report.log

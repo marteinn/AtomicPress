@@ -33,9 +33,14 @@ def feed_latest_posts():
         if post.markdown:
             content = markdown.markdown(content)
 
+        if post.author:
+            author_name = post.author.nicename
+        else:
+            author_name = "Empty"
+
         feed.add(post.title, unicode(content),
                  content_type='html',
-                 author=post.author.nicename,
+                 author=author_name,
                  url="%s/%s" % (url_root, post.name),
                  updated=post.date,
                  published=post.modified)

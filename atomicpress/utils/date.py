@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 
+"""
+atomicpress.utils.date
+----------
+Common date calculation helpers
+"""
+
+
 def get_months_apart(d1, d2):
     """
     Get amount of months between dates

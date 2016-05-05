@@ -6,6 +6,7 @@ import datetime
 
 from flask import render_template
 from sqlalchemy import desc, asc, func
+
 from atomicpress.themes.minimal import theme, PAGE_SIZE
 from atomicpress.themes.minimal import helpers
 from atomicpress.models import Blog, Post, PostType, Category, Tag
