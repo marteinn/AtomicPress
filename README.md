@@ -44,29 +44,30 @@ If you want a quickstart, just copy the example `base-example`, cd and type `mak
 
 ## Settings
 
-- SQLALCHEMY_DATABASE_URI: Path to your sqlite database.
-- DEBUG: Show errors, should be deactivated for live environments.
-- SECRET_KEY: Session key for signing.
-- STATIC_URL: Path to the static content, default: `/static/`
-- UPLOADS_URL: Path to the uploads folder, defult `/uploads/`
-- THEME: The theme you want to run, default is `atomicpress.themes.minimal`.
-- GIST_BACKEND_RENDERING: If you want to render a `<noscript></noscript>` that contains the gist content as pure text. Default is `False`
-- EXTENSIONS: A array with the extensions you want to run.
-- MARKDOWN_EXTENSIONS: A list with the active [markdown extensions](https://pythonhosted.org/Markdown/extensions/index.html).
+- `SQLALCHEMY_DATABASE_URI`: Path to your sqlite database.
+- `DEBUG`: Show errors, should be deactivated for live environments.
+- `SECRET_KEY`: Session key for signing.
+- `STATIC_URL`: Path to the static content, default: `/static/`
+- `UPLOADS_URL`: Path to the uploads folder, defult `/uploads/`
+- `THEME`: The theme you want to run, default is `atomicpress.themes.minimal`.
+- `GIST_BACKEND_RENDERING`: If you want to render a `<noscript></noscript>` that contains the gist content as pure text. Default is `False`
+- `EXTENSIONS`: A array with the extensions you want to run.
+- `MARKDOWN_EXTENSIONS`: A list with the active [markdown extensions](https://pythonhosted.org/Markdown/extensions/index.html).
 
 ### S3
-- AWS_ACCESS_KEY_ID: Access key id to aws.
-- AWS_ACCESS_KEY: Access key to aws.
-- AWS_REGION: The region your bucket is places (optional).
-- S3_BUCKET: The bucket you want to deploy to.
-- S3_DESTINATION: The path within the bucket you want to deploy to.
+- `AWS_ACCESS_KEY_ID`: Access key id to aws.
+- `AWS_ACCESS_KEY`: Access key to aws.
+- `AWS_REGION`: The region your bucket is places (optional).
+- `AWS_S3_CALLING_FORMAT`: A boto setting (uses SubdomainCallingFormat by default) (optional).
+- `S3_BUCKET`: The bucket you want to deploy to.
+- `S3_DESTINATION`: The path within the bucket you want to deploy to.
 
 ### FTP
 
-- FTP_HOST: Hostname to your ftp account.
-- FTP_USERNAME: Ftp username.
-- FTP_PASSWORD: Ftp password.
-- FTP_DESTINATION: Ftp sup
+- `FTP_HOST`: Hostname to your ftp account.
+- `FTP_USERNAME`: Ftp username.
+- `FTP_PASSWORD`: Ftp password.
+- `FTP_DESTINATION`: Ftp sup
 
 ## Admin
 
