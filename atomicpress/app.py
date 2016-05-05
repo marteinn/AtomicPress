@@ -2,6 +2,7 @@
 
 import os
 import importlib
+
 from flask_migrate import Migrate, MigrateCommand
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
