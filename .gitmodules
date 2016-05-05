@@ -1,0 +1,3 @@
+[submodule "examples/marteinn.se"]
+	path = examples/marteinn.se
+	url = git@github.com:marteinn/marteinn.se
