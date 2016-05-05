@@ -11,10 +11,9 @@ import os
 from unipath import Path
 import boto
 from boto.s3.key import Key
+from flask_script import Manager
 
 from atomicpress.app import app, manager
-
-from flask_script import Manager
 
 
 S3SyncCommand = Manager(usage='Sync files to s3')
@@ -26,8 +25,11 @@ logger = app.logger
 def sync():
     params = {
         "aws_access_key_id": app.config["AWS_ACCESS_KEY_ID"],
-        "aws_secret_access_key": app.config["AWS_ACCESS_KEY"]
+        "aws_secret_access_key": app.config["AWS_ACCESS_KEY"],
     }
+
+    if app.config.get('AWS_S3_CALLING_FORMAT'):
+        params['calling_format'] = app.config['AWS_S3_CALLING_FORMAT']
 
     if app.config.get("AWS_REGION"):
         c = boto.s3.connect_to_region(app.config["AWS_REGION"], **params)
@@ -39,6 +41,9 @@ def sync():
 
     local_path = app.config["FREEZER_DESTINATION"]
     destination_path = app.config["S3_DESTINATION"]
+
+    local_path = Path(local_path)
+    destination_path = Path(destination_path)
 
     for path, file_dir, files in os.walk(local_path):
         for local_file in files:

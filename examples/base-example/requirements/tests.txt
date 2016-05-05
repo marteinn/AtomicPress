@@ -1,4 +1,0 @@
--r install.txt
-
-# Test related packages
-nose
