@@ -66,17 +66,17 @@ class Post(db.Model):
 
     author_id = db.Column(db.Integer, db.ForeignKey('author.id'))
     author = relationship("Author")
+    status = db.Column(db.String(20), default=PostStatus.DRAFT)
+    type = db.Column(db.String(20), default=PostType.POST)
     guid = db.Column(db.String(255))
-    content = db.Column(db.Text())
+    name = db.Column(db.String(200))
     title = db.Column(db.Text())
     excerpt = db.Column(db.Text())
-    status = db.Column(db.String(20), default=PostStatus.DRAFT)
-    name = db.Column(db.String(200))
+    content = db.Column(db.Text())
     modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     order = db.Column(db.Integer, default=0)
-    type = db.Column(db.String(20), default=PostType.POST)
     markdown = db.Column(db.Boolean())
     mime_type = db.Column(db.String(100))
     tags = relationship("Tag",
