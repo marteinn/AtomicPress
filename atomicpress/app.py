@@ -24,6 +24,9 @@ DEFAULT_MARKDOWN_EXTENSIONS = [
     "markdown.extensions.headerid"
 ]
 
+
+app_dir = os.path.dirname(os.path.abspath(__file__))
+
 app = Flask(__name__)
 app.config.update(dict(
     SQLALCHEMY_DATABASE_URI="",
@@ -54,17 +57,17 @@ if "UPLOADS_PATH" not in app.config or \
 db = SQLAlchemy()
 db.init_app(app)
 
-migrate = Migrate(app, db)
+migrate = Migrate(app, db, directory=os.path.join(app_dir, 'migrations'))
 
 manager = Manager(app)
 
 
 def setup(init_run=False):
-    from atomicpress import models  # NOQA
-    from atomicpress import views  # NOQA
-    from atomicpress import filters  # NOQA
-    from atomicpress import commands  # NOQA
-    from atomicpress import context_processors  # NOQA
+    import models  # NOQA
+    import views  # NOQA
+    import filters  # NOQA
+    import commands  # NOQA
+    import context_processors  # NOQA
 
     manager.add_command('db', MigrateCommand)
 
