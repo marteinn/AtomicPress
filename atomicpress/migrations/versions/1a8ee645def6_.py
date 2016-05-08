@@ -1,4 +1,4 @@
-"""empty message
+"""Added category and tag fields
 
 Revision ID: 1a8ee645def6
 Revises: 127682c11a74
