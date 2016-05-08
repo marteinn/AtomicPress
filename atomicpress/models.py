@@ -75,6 +75,7 @@ class Post(db.Model):
     content = db.Column(db.Text())
     modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    template = db.Column(db.String(255))
 
     order = db.Column(db.Integer, default=0)
     markdown = db.Column(db.Boolean())
