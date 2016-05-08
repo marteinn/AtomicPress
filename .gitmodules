@@ -1,3 +1,6 @@
 [submodule "examples/marteinn.se"]
 	path = examples/marteinn.se
 	url = git@github.com:marteinn/marteinn.se
+[submodule "examples/madeinstockholm.se"]
+	path = examples/madeinstockholm.se
+	url = git@github.com:marteinn/madeinstockholm.se---website
