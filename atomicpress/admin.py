@@ -19,6 +19,7 @@ class HomeView(AdminIndexView):
 class PostView(ModelView):
     column_default_sort = ('date', True)
     column_searchable_list = ('name', 'title', 'content')
+    column_filters = ('type', 'status')
     column_list = ('title', 'status', 'modified', 'date', 'type')
     can_export = True
 
